@@ -27,22 +27,43 @@
         <ul class="sidebar-menu">
             <li class="sidebar-header">Data Master</li>
             <li>
-                <a href="{{route('userIndex')}}" class="waves-effect">
-                    <i class="zmdi zmdi-accounts-list"></i> <span> Data Admin </span>
-                </a>
+                <a href="{{route('pegawaiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pegawai </span></a>
+            </li>
+            <li>
+                <a href="{{route('pensiunIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pengusulan Pensiun </span></a>
+            </li>
+            <li>
+                <a href="{{route('cutiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pengusulan Cuti </span></a>
+            </li>
+            @if(auth()->user()->role == '1')
+            <li>
+                <a href="{{route('ktpIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data KTP </span></a>
             </li>
 
+
+            <li class="sidebar-header">Kategori</li>
+            <li>
+                <a href="{{route('instansiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Instansi Kerja </span></a>
+            </li>
+            <li>
+                <a href="{{route('unitIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Unit Kerja </span></a>
+            </li>
+            <li>
+                <a href="{{route('satuanIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Satuan Kerja </span></a>
+            </li>
+            <li>
+                <a href="{{route('golonganIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Golongan Kerja </span></a>
+            </li>
+            <li>
+                <a href="{{route('jabatanIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Jabatan Kerja </span></a>
+            </li>
+            @endif
+            @if(auth()->user()->role == '2')
             <li class="sidebar-header">Setting</li>
             <li>
-                <a href="javaScript:void();" class="waves-effect">
-                    <i class="zmdi zmdi-widgets"></i> <span>User</span>
-                    <i class="fa fa-angle-left float-right"></i>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li><a href="widgets-static.html"><i class="zmdi zmdi-dot-circle-alt"></i> Static Widgets</a></li>
-                    <li><a href="widgets-data.html"><i class="zmdi zmdi-dot-circle-alt"></i> Data Widgets</a></li>
-                </ul>
+                <a href="{{route('userIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Admin </span></a>
             </li>
+            @endif
         </ul>
 
     </div>

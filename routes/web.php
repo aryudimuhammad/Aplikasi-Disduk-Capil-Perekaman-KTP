@@ -14,13 +14,60 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
+    Route::get('/admin/instansi', 'InstansiController@index')->name('instansiIndex');
+    Route::post('/admin/instansi', 'InstansiController@store')->name('instansistore');
+    Route::put('/admin/instansi', 'InstansiController@update')->name('instansiUpdate');
+    Route::delete('/admin/instansi/{id}', 'InstansiController@delete')->name('instansiDelete');
+
+    Route::get('/admin/unit', 'UnitController@index')->name('unitIndex');
+    Route::post('/admin/unit', 'UnitController@store')->name('unitstore');
+    Route::put('/admin/unit', 'UnitController@update')->name('unitUpdate');
+    Route::delete('/admin/unit/{id}', 'UnitController@delete')->name('unitDelete');
+
+    Route::get('/admin/satuan', 'SatuanController@index')->name('satuanIndex');
+    Route::post('/admin/satuan', 'SatuanController@store')->name('satuanstore');
+    Route::put('/admin/satuan', 'SatuanController@update')->name('satuanUpdate');
+    Route::delete('/admin/satuan/{id}', 'SatuanController@delete')->name('satuanDelete');
+
+    Route::get('/admin/golongan', 'GolonganController@index')->name('golonganIndex');
+    Route::post('/admin/golongan', 'GolonganController@store')->name('golonganstore');
+    Route::put('/admin/golongan', 'GolonganController@update')->name('golonganUpdate');
+    Route::delete('/admin/golongan/{id}', 'GolonganController@delete')->name('golonganDelete');
+
+    Route::get('/admin/jabatan', 'JabatanController@index')->name('jabatanIndex');
+    Route::post('/admin/jabatan', 'JabatanController@store')->name('jabatanstore');
+    Route::put('/admin/jabatan', 'JabatanController@update')->name('jabatanUpdate');
+    Route::delete('/admin/jabatan/{id}', 'JabatanController@delete')->name('jabatanDelete');
+
+    Route::get('/admin/pegawai', 'PegawaiController@index')->name('pegawaiIndex');
+    Route::post('/admin/pegawai', 'PegawaiController@store')->name('pegawaistore');
+    Route::put('/admin/pegawai', 'PegawaiController@update')->name('pegawaiUpdate');
+    Route::delete('/admin/pegawai/{id}', 'PegawaiController@delete')->name('pegawaiDelete');
+
+    Route::get('/admin/ktp', 'KtpController@index')->name('ktpIndex');
+    Route::post('/admin/ktp', 'KtpController@store')->name('ktpstore');
+    Route::put('/admin/ktp', 'KtpController@update')->name('ktpUpdate');
+    Route::delete('/admin/ktp/{id}', 'KtpController@delete')->name('ktpDelete');
+});
 
 Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
+    Route::get('/admin/pensiun', 'PensiunController@index')->name('pensiunIndex');
+    Route::post('/admin/pensiun', 'PensiunController@store')->name('pensiunstore');
+    Route::put('/admin/pensiun', 'PensiunController@update')->name('pensiunUpdate');
+    Route::delete('/admin/pensiun/{id}', 'PensiunController@delete')->name('pensiunDelete');
+
+    Route::get('/admin/cuti', 'CutiController@index')->name('cutiIndex');
+    Route::post('/admin/cuti', 'CutiController@store')->name('cutistore');
+    Route::put('/admin/cuti', 'CutiController@update')->name('cutiUpdate');
+    Route::delete('/admin/cuti/{id}', 'CutiController@delete')->name('cutiDelete');
+
     Route::get('/user', 'UserController@index')->name('userIndex');
     Route::delete('/user/{id}', 'UserController@delete')->name('userDelete');
     Route::get('/home', 'HomeController@index')->name('home');
