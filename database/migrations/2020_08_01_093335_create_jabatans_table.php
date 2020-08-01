@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstalansisTable extends Migration
+class CreateJabatansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInstalansisTable extends Migration
      */
     public function up()
     {
-        Schema::create('instalansis', function (Blueprint $table) {
+        Schema::create('jabatans', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->length(36);
             $table->string('kode');
@@ -29,6 +29,6 @@ class CreateInstalansisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instalansis');
+        Schema::dropIfExists('jabatans');
     }
 }

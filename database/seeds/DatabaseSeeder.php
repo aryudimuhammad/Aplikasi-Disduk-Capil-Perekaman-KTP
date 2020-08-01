@@ -1,9 +1,10 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +15,41 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // insert data ke table pegawai
-        DB::table('users')->insert([
+        $faker = Faker::create('id_ID');
+
+        User::insert([
             'uuid' => Str::random(36),
-            'name' => 'Joni',
+            'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123'),
         ]);
 
-        // $this->call(UserSeeder::class);
+        for ($i = 1; $i <= 5; $i++) {
+            User::insert([
+                'uuid' => Str::random(36),
+                'name' => $faker->firstNameMale,
+                'email' => $faker->email,
+                'password' => Hash::make('123'),
+            ]);
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            User::insert([
+                'uuid' => Str::random(36),
+                'name' => $faker->firstNameFemale,
+                'email' => $faker->email,
+                'password' => Hash::make('123'),
+            ]);
+        }
+
+        $this->call(InstansiSeeder::class);
+        $this->call(UnitSeeder::class);
+        $this->call(SatuanSeeder::class);
+        $this->call(GolonganSeeder::class);
+        $this->call(JabatanSeeder::class);
+        $this->call(PegawaiSeeder::class);
+        $this->call(CutiSeeder::class);
+        $this->call(PensiunSeeder::class);
+        $this->call(KtpSeeder::class);
     }
 }

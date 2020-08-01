@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class InstalansiController extends Controller
+class CutiController extends Controller
 {
     //
 }
