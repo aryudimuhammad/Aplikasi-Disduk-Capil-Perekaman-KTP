@@ -19,6 +19,9 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home/pendaftaran', 'HomeController@index')->name('ktppendaftaranIndex');
+Route::post('/home/pendaftaran', 'HomeController@create')->name('ktppendaftaranCreaete');
+Route::get('/home/show', 'HomeController@index')->name('ktppendaftaranShow');
 
 Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::get('/admin/instansi', 'InstansiController@index')->name('instansiIndex');

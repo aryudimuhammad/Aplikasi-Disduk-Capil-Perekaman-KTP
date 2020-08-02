@@ -11,7 +11,7 @@
     <title>@yield('title')</title>
 
     <!--favicon-->
-    <link rel="icon" href="{{url('template/assets/images/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url('images/logo.gif')}}" type="image/x-icon">
     <!-- simplebar CSS-->
     <link href="{{url('template/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
     <!-- Bootstrap core CSS-->
