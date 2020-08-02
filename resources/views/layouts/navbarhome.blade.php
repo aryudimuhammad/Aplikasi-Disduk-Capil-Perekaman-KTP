@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="main-nav float-left d-none d-lg-block">
             <ul>
-                <li><a href="#">Pendaftaran KTP</a></li>
+                <li><a href="{{route('ktppendaftaranIndex')}}">Pendaftaran KTP</a></li>
             </ul>
         </nav>
         <nav class="main-nav float-right d-none d-lg-block">

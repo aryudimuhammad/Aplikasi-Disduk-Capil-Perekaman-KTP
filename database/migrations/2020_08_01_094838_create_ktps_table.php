@@ -33,7 +33,7 @@ class CreateKtpsTable extends Migration
             $table->string('pekerjaan');
             $table->string('foto');
             $table->string('email');
-            $table->enum('status_ktp', ['1', '2'])->default('1');
+            $table->enum('status_ktp', ['1', '2', '3'])->default('1');
             $table->timestamps();
         });
     }
