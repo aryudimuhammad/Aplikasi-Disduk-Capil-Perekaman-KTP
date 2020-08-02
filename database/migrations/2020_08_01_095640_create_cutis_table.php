@@ -23,7 +23,7 @@ class CreateCutisTable extends Migration
             $table->text('keterangan');
             $table->enum('status', ['1', '2']);
             $table->timestamps();
-            $table->foreign('pegawai_id')->references('id')->on('pegawais');
+            $table->foreign('pegawai_id')->references('id')->on('pegawais')->onDelete('cascade');
         });
     }
 

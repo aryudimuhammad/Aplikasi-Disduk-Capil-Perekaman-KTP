@@ -40,7 +40,7 @@ class CreatePegawaisTable extends Migration
             $table->foreign('satuan_id')->references('id')->on('satuans');
             $table->foreign('golongan_id')->references('id')->on('golongans');
             $table->foreign('jabatan_id')->references('id')->on('jabatans');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

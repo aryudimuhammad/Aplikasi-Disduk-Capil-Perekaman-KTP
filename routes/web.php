@@ -23,6 +23,22 @@ Route::get('/home/pendaftaran', 'PendaftaranController@index')->name('ktppendaft
 Route::post('/home/pendaftaran', 'PendaftaranController@create')->name('ktppendaftaranCreate');
 Route::get('/home/show', 'PendaftaranController@show')->name('ktppendaftaranShow');
 
+Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
+    Route::get('/admin/pensiun', 'PensiunController@index')->name('pensiunIndex');
+    Route::post('/admin/pensiun', 'PensiunController@store')->name('pensiunstore');
+    Route::put('/admin/pensiun', 'PensiunController@update')->name('pensiunUpdate');
+    Route::delete('/admin/pensiun/{id}', 'PensiunController@delete')->name('pensiunDelete');
+
+    Route::get('/admin/cuti', 'CutiController@index')->name('cutiIndex');
+    Route::post('/admin/cuti', 'CutiController@store')->name('cutistore');
+    Route::put('/admin/cuti', 'CutiController@update')->name('cutiUpdate');
+    Route::delete('/admin/cuti/{id}', 'CutiController@delete')->name('cutiDelete');
+
+    Route::get('/user', 'UserController@index')->name('userIndex');
+    Route::delete('/user/{id}', 'UserController@delete')->name('userDelete');
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
 Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::get('/admin/instansi', 'InstansiController@index')->name('instansiIndex');
     Route::post('/admin/instansi', 'InstansiController@store')->name('instansistore');
@@ -52,26 +68,11 @@ Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::get('/admin/pegawai', 'PegawaiController@index')->name('pegawaiIndex');
     Route::post('/admin/pegawai', 'PegawaiController@store')->name('pegawaistore');
     Route::put('/admin/pegawai', 'PegawaiController@update')->name('pegawaiUpdate');
-    Route::delete('/admin/pegawai/{id}', 'PegawaiController@delete')->name('pegawaiDelete');
+    Route::delete('/admin/pegawai/delete/{id}', 'PegawaiController@delete')->name('pegawaiDelete');
+    Route::get('/admin/pegawai/show/{id}', 'PegawaiController@show')->name('pegawaiShow');
 
     Route::get('/admin/ktp', 'KtpController@index')->name('ktpIndex');
     Route::post('/admin/ktp', 'KtpController@store')->name('ktpstore');
     Route::put('/admin/ktp', 'KtpController@update')->name('ktpUpdate');
     Route::delete('/admin/ktp/{id}', 'KtpController@delete')->name('ktpDelete');
-});
-
-Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
-    Route::get('/admin/pensiun', 'PensiunController@index')->name('pensiunIndex');
-    Route::post('/admin/pensiun', 'PensiunController@store')->name('pensiunstore');
-    Route::put('/admin/pensiun', 'PensiunController@update')->name('pensiunUpdate');
-    Route::delete('/admin/pensiun/{id}', 'PensiunController@delete')->name('pensiunDelete');
-
-    Route::get('/admin/cuti', 'CutiController@index')->name('cutiIndex');
-    Route::post('/admin/cuti', 'CutiController@store')->name('cutistore');
-    Route::put('/admin/cuti', 'CutiController@update')->name('cutiUpdate');
-    Route::delete('/admin/cuti/{id}', 'CutiController@delete')->name('cutiDelete');
-
-    Route::get('/user', 'UserController@index')->name('userIndex');
-    Route::delete('/user/{id}', 'UserController@delete')->name('userDelete');
-    Route::get('/home', 'HomeController@index')->name('home');
 });

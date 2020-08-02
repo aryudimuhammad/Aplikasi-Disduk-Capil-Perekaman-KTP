@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123'),
         ]);
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 2; $i <= 4; $i++) {
             User::insert([
                 'uuid' => Str::random(36),
                 'name' => $faker->firstNameMale,
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 5; $i <= 11; $i++) {
             User::insert([
                 'uuid' => Str::random(36),
                 'name' => $faker->firstNameFemale,

@@ -16,7 +16,7 @@ class PegawaiSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 6; $i++) {
+        for ($i = 2; $i <= 4; $i++) {
             Pegawai::insert([
                 'uuid' => Str::random(36),
                 'nip' => $faker->ean13,
@@ -40,7 +40,7 @@ class PegawaiSeeder extends Seeder
             ]);
         }
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 5; $i <= 11; $i++) {
             Pegawai::insert([
                 'uuid' => Str::random(36),
                 'nip' => $faker->ean13,
