@@ -13,12 +13,12 @@
                     @csrf
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
-                        <label for="nik">NIK</label>
-                        <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukkan NIK" value="{{old('nik')}}">
+                        <label for="nip">NIP</label>
+                        <input type="text" class="form-control" id="nip" name="nip" placeholder="Masukkan NIP" value="{{old('nip')}}">
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Instansi Kerja" value="{{old('nama')}}">
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Lengkap" value="{{old('nama')}}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -107,19 +107,19 @@
                         <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">{{old('alamat')}}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="kodepoos">Kode Pos</label>
-                        <input type="text" class="form-control" id="kodepoos" name="kodepoos" placeholder="Masukkan Kode Pos" value="{{old('kodepoos')}}">
+                        <label for="kodepos">Kode Pos</label>
+                        <input type="text" class="form-control" id="kodepos" name="kodepos" placeholder="Masukkan Kode Pos" value="{{old('kodepos')}}">
                     </div>
                     <div class="form-group">
                         <label for="telp">Nomor HP</label>
-                        <input type="text" class="form-control" id="telp" name="telp" placeholder="Masukkan Kode Pos" value="{{old('telp')}}">
+                        <input type="text" class="form-control" id="telp" name="telp" placeholder="Masukkan Nomor HP" value="{{old('telp')}}">
                     </div>
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
                         <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" value="{{old('tgl_lahir')}}">
                     </div>
-                    <h6 class="form-group">Tempat lahir</h6>
                     <div class="form-group">
+                        <label for="tempat_lahir">Tempat lahir</label>
                         <textarea class="form-control" id="tempat_lahir" name="tempat_lahir" rows="3" placeholder="Masukkan Tempat lahir">{{old('tempat_lahir')}}</textarea>
                     </div>
                 </form>

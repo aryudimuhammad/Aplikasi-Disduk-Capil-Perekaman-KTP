@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 <h4 class="page-title">Data Pegawai</h4>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javaScript:void();">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Data Pegawai</li>
                 </ol>
             </div>
@@ -20,7 +20,7 @@
                     <div class="card-header">
                         <i class="fa fa-table"></i> Data Pegawai
                         <div class="btn-group float-sm-right">
-                            <button class="btn btn-primary btn-sm"> <i class="fa fa-plus"> </i> Tambah Data</button> &emsp13;
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah"> <i class="fa fa-plus"> </i> Tambah Data</button> &emsp13;
                             <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
                             <div class="dropdown-menu">
                                 <a href="javaScript:void();" class="dropdown-item">Keseluruhan</a>
@@ -59,7 +59,7 @@
                                         <td>{{carbon\carbon::parse($d->tgl_masuk)->translatedformat('d F Y')}}</td>
                                         <td>
                                             <a href="{{route('pegawaiShow', ['id' => $d->uuid])}}" class="btn btn-outline-info btn-sm"> <i class="fa fa-search">Detail</i> </a>
-                                            <button class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-nama="{{$d->user->name}}" data-instansi="{{$d->instansi->id}}" data-unit="{{$d->unit->id}}" data-satuan="{{$d->satuan->id}}" data-golongan="{{$d->golongan->id}}" data-jabatan="{{$d->jabatan->id}}" data-email="{{$d->user->email}}" data-tgl_masuk="{{$d->tgl_masuk}}" data-tgl_lahir="{{$d->tgl_lahir}}" data-tempat_lahir="{{$d->tempat_lahir}}" data-jk="{{$d->jk}}" data-agama="{{$d->agama}}" data-goldar="{{$d->goldar}}" data-status="{{$d->status}}" data-kependudukan="{{$d->kependudukan}}" data-alamat="{{$d->alamat}}" data-kodepos="{{$d->kodepos}}" data-telp="{{$d->telp}}" data-nip="{{$d->nip}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
                                         </td>
                                     </tr>
@@ -78,7 +78,6 @@
 @include('admin.pegawai.edit')
 @endsection
 @section('script')
-<!--Data Tables js-->
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js')}}"></script>
@@ -91,12 +90,59 @@
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js')}}"></script>
 
 <script>
+    $('#modaledit').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id')
+        let nama = button.data('nama')
+        let nip = button.data('nip')
+        let instansi = button.data('instansi')
+        let unit = button.data('unit')
+        let satuan = button.data('satuan')
+        let golongan = button.data('golongan')
+        let jabatan = button.data('jabatan')
+        let tgl_masuk = button.data('tgl_masuk')
+        let tgl_lahir = button.data('tgl_lahir')
+        let tempat_lahir = button.data('tempat_lahir')
+        let goldar = button.data('goldar')
+        let status = button.data('status')
+        let email = button.data('email')
+        let kependudukan = button.data('kependudukan')
+        let kodepos = button.data('kodepos')
+        let jk = button.data('jk')
+        let alamat = button.data('alamat')
+        let telp = button.data('telp')
+        let agama = button.data('agama')
+        let modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #nama').val(nama);
+        modal.find('.modal-body #nip').val(nip);
+        modal.find('.modal-body #instansi').val(instansi);
+        modal.find('.modal-body #unit').val(unit);
+        modal.find('.modal-body #satuan').val(satuan);
+        modal.find('.modal-body #golongan').val(golongan);
+        modal.find('.modal-body #jabatan').val(jabatan);
+        modal.find('.modal-body #tgl_masuk').val(tgl_masuk);
+        modal.find('.modal-body #tgl_lahir').val(tgl_lahir);
+        modal.find('.modal-body #tempat_lahir').val(tempat_lahir);
+        modal.find('.modal-body #goldar').val(goldar);
+        modal.find('.modal-body #status').val(status);
+        modal.find('.modal-body #email').val(email);
+        modal.find('.modal-body #kependudukan').val(kependudukan);
+        modal.find('.modal-body #kodepos').val(kodepos);
+        modal.find('.modal-body #jk').val(jk);
+        modal.find('.modal-body #alamat').val(alamat);
+        modal.find('.modal-body #agama').val(agama);
+        modal.find('.modal-body #telp').val(telp);
+    })
+</script>
+
+<script>
     $(document).ready(function() {
         //Default data table
         $('#default-datatable').DataTable();
     });
 </script>
-<!--Data Tables js-->
 
 <script>
     $(document).on('click', '.delete', function(e) {
