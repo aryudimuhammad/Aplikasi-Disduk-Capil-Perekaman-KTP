@@ -51,5 +51,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CutiSeeder::class);
         $this->call(PensiunSeeder::class);
         $this->call(KtpSeeder::class);
+        $this->call(PerpanjangSeeder::class);
     }
 }

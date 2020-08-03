@@ -21,7 +21,18 @@ class CutiSeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             Cuti::insert([
                 'uuid' => Str::random(36),
-                'pegawai_id' => $faker->numberBetween(1, 10),
+                'pegawai_id' => $i,
+                'jenis_cuti' => $faker->numberBetween(3, 4),
+                'mulai_cuti' => $faker->date($mulai),
+                'akhir_cuti' => $faker->date($akhir),
+                'keterangan' => $faker->text(200),
+                'status' => $faker->numberBetween(1, 2),
+            ]);
+        }
+        for ($i = 6; $i <= 10; $i++) {
+            Cuti::insert([
+                'uuid' => Str::random(36),
+                'pegawai_id' => $i,
                 'jenis_cuti' => $faker->numberBetween(1, 5),
                 'mulai_cuti' => $faker->date($mulai),
                 'akhir_cuti' => $faker->date($akhir),

@@ -15,6 +15,7 @@ class CreatePerpanjangsTable extends Migration
     {
         Schema::create('perpanjangs', function (Blueprint $table) {
             $table->id();
+            $table->string('uuid')->length(36);
             $table->unsignedBigInteger('cuti_id');
             $table->date('mulai');
             $table->date('akhir');

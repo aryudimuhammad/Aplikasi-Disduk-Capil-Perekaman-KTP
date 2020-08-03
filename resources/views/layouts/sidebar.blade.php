@@ -30,16 +30,18 @@
                 <a href="{{route('pegawaiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pegawai </span></a>
             </li>
             <li>
-                <a href="{{route('pensiunIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pengusulan Pensiun </span></a>
+                <a href="{{route('pensiunIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Pengusulan Pensiun </span></a>
             </li>
             <li>
-                <a href="{{route('cutiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pengusulan Cuti </span></a>
+                <a href="{{route('cutiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Pengusulan Cuti </span></a>
+            </li>
+            <li>
+                <a href="{{route('perpanjangIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Perpanjang Masa Cuti </span></a>
             </li>
             @if(auth()->user()->role == '1')
             <li>
                 <a href="{{route('ktpIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data KTP </span></a>
             </li>
-
 
             <li class="sidebar-header">Kategori</li>
             <li>

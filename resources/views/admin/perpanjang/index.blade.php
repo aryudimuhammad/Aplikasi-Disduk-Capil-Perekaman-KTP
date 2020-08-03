@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title') Data Pendaftaran KTP @endsection
+@section('title') Data Perpanjang Masa Cuti @endsection
 @section('link')
 <style>
     #imgView {
@@ -45,10 +45,10 @@
         <!-- Breadcrumb-->
         <div class="row pt-2 pb-2">
             <div class="col-sm-12">
-                <h4 class="page-title">Data Pendaftaran KTP</h4>
+                <h4 class="page-title">Data Perpanjang Masa Cuti</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data Pendaftaran KTP</li>
+                    <li class="breadcrumb-item active" aria-current="page">Data Perpanjang Masa Cuti</li>
                 </ol>
             </div>
         </div>
@@ -57,7 +57,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Data Pendaftaran KTP
+                        <i class="fa fa-table"></i> Data Perpanjang Masa Cuti
                         <div class="btn-group float-sm-right">
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah"> <i class="fa fa-plus"> </i> Tambah Data</button> &emsp13;
                             <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
@@ -73,33 +73,30 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Permohonan</th>
-                                        <th>Foto KTP</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Email</th>
-                                        <th>KK</th>
-                                        <th>NIK</th>
-                                        <th>Status</th>
+                                        <th>NIP</th>
+                                        <th>Nama Pegawai</th>
+                                        <th>Bukti</th>
+                                        <th>Jenis Cuti</th>
+                                        <th>Tambah Masa Cuti</th>
                                         <th>Keterangan</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($data as $d)
                                     <tr>
-                                        <td class="text-center">{{$loop->iteration}}</td>
-                                        <td>@if($d->permohonan == 1) Baru @elseif($d->permohonan == 2) Perpanjangan @elseif($d->permohonan == 3 ) Pergantian @else - @endif</td>
-                                        <td class="text-center"><img src="/foto/{{$d->foto}}" alt="foto" class="customer-img" style="border-radius: 10%;" width="80%;" height="100%;"></td>
-                                        <td>{{$d->nama}}</td>
-                                        <td>{{$d->email}}</td>
-                                        <td>{{$d->kk}}</td>
-                                        <td>{{$d->nik}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2) Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
-                                        <td>@if($d->keterangan == null) - @else {{$d->keterangan}} @endif </td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d->cuti->pegawai->nip}}</td>
+                                        <td>{{$d->cuti->pegawai->user->name}}</td>
+                                        <td>{{$d->bukti}}</td>
+                                        <td>@if($d->cuti->jenis_cuti == 3 ) Cuti Sakit @elseif($d->cuti->jenis_cuti == 4 ) Cuti Bersalin @else - @endif</td>
+                                        <td>{{carbon\carbon::parse($d->mulai)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir)->translatedformat('d F Y')}}</td>
+                                        <td>{{$d->keterangan}}</td>
+                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
                                         <td>
-                                            <a class="btn btn-outline-info btn-sm" href="{{route('ktpShow',['id' => $d->uuid])}}"> <i class="fa fa-search"> </i> Detail</a>
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-permohonan="{{$d->permohonan}}" data-nama="{{$d->nama}}" data-kk="{{$d->kk}}" data-nik="{{$d->nik}}" data-jk="{{$d->jk}}" data-agama="{{$d->agama}}" data-tempat_lahir="{{$d->tempat_lahir}}" data-tgl_lahir="{{$d->tgl_lahir}}" data-status="{{$d->status}}" data-alamat="{{$d->alamat}}" data-rt="{{$d->rt}}" data-rw="{{$d->rw}}" data-kewarganegaraan="{{$d->kewarganegaraan}}" data-goldar="{{$d->goldar}}" data-pekerjaan="{{$d->pekerjaan}}" data-pict="{{$d->foto}}" data-email="{{$d->email}}" data-keterangan="{{$d->keterangan}}" data-status_ktp="{{$d->status_ktp}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit"> </i> Edit</button>
-                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash"> </i> Hapus</button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-cuti_id="{{$d->cuti_id}}" data-mulai="{{$d->mulai}}" data-akhir="{{$d->akhir}}" data-pict="{{$d->bukti}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -113,8 +110,8 @@
     </div>
     <!-- End container-fluid-->
 </div>
-@include('admin.ktp.create')
-@include('admin.ktp.edit')
+@include('admin.perpanjang.create')
+@include('admin.perpanjang.edit')
 @endsection
 @section('script')
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
@@ -132,47 +129,21 @@
     $('#modaledit').on('show.bs.modal', function(event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let permohonan = button.data('permohonan')
-        let nama = button.data('nama')
-        let kk = button.data('kk')
-        let nik = button.data('nik')
-        let jk = button.data('jk')
-        let agama = button.data('agama')
-        let tempat_lahir = button.data('tempat_lahir')
-        let tgl_lahir = button.data('tgl_lahir')
-        let status = button.data('status')
-        let alamat = button.data('alamat')
-        let rt = button.data('rt')
-        let rw = button.data('rw')
-        let kewarganegaraan = button.data('kewarganegaraan')
-        let goldar = button.data('goldar')
-        let pekerjaan = button.data('pekerjaan')
+        let cuti_id = button.data('cuti_id')
         let pict = button.data('pict')
-        let email = button.data('email')
+        let mulai = button.data('mulai')
+        let akhir = button.data('akhir')
         let keterangan = button.data('keterangan')
-        let status_ktp = button.data('status_ktp')
+        let status = button.data('status')
         let modal = $(this)
 
         modal.find('.modal-body #id').val(id)
-        modal.find('.modal-body #permohonan').val(permohonan);
-        modal.find('.modal-body #nama').val(nama);
-        modal.find('.modal-body #kk').val(kk);
-        modal.find('.modal-body #nik').val(nik);
-        modal.find('.modal-body #jk').val(jk);
-        modal.find('.modal-body #agama').val(agama);
-        modal.find('.modal-body #tempat_lahir').val(tempat_lahir);
-        modal.find('.modal-body #tgl_lahir').val(tgl_lahir);
-        modal.find('.modal-body #status').val(status);
-        modal.find('.modal-body #alamat').val(alamat);
-        modal.find('.modal-body #rt').val(rt);
-        modal.find('.modal-body #rw').val(rw);
-        modal.find('.modal-body #kewarganegaraan').val(kewarganegaraan);
-        modal.find('.modal-body #goldar').val(goldar);
-        modal.find('.modal-body #pekerjaan').val(pekerjaan);
-        modal.find('.modal-body #pict').attr('src', '/foto/' + pict);
-        modal.find('.modal-body #email').val(email);
+        modal.find('.modal-body #cuti_id').val(cuti_id);
+        modal.find('.modal-body #pict').attr('src', '/bukti/' + pict);
+        modal.find('.modal-body #mulai').val(mulai);
+        modal.find('.modal-body #akhir').val(akhir);
         modal.find('.modal-body #keterangan').val(keterangan);
-        modal.find('.modal-body #status_ktp').val(status_ktp);
+        modal.find('.modal-body #status').val(status);
     })
 </script>
 
@@ -198,7 +169,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{url('/admin/ktp/delete')}}" + '/' + id,
+                    url: "{{url('/admin/perpanjang/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',
@@ -228,19 +199,19 @@
 </script>
 
 <script>
-    $("#foto").change(function(event) {
+    $("#bukti").change(function(event) {
         fadeInAdd();
         getURL(this);
     });
 
-    $("#foto").on('click', function(event) {
+    $("#bukti").on('click', function(event) {
         fadeInAdd();
     });
 
     function getURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            var filename = $("#foto").val();
+            var filename = $("#bukti").val();
             filename = filename.substring(filename.lastIndexOf('\\') + 1);
             reader.onload = function(e) {
                 debugger;
