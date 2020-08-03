@@ -35,12 +35,12 @@ class CreatePegawaisTable extends Migration
             $table->string('kodepos');
             $table->string('telp');
             $table->timestamps();
-            $table->foreign('instansi_id')->references('id')->on('instansis');
-            $table->foreign('unit_id')->references('id')->on('units');
-            $table->foreign('satuan_id')->references('id')->on('satuans');
-            $table->foreign('golongan_id')->references('id')->on('golongans');
-            $table->foreign('jabatan_id')->references('id')->on('jabatans');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('instansi_id')->references('id')->on('instansis')->onDelete('cascade');
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
+            $table->foreign('satuan_id')->references('id')->on('satuans')->onDelete('cascade');
+            $table->foreign('golongan_id')->references('id')->on('golongans')->onDelete('cascade');
+            $table->foreign('jabatan_id')->references('id')->on('jabatans')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

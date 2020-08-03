@@ -22,7 +22,7 @@ class CutiSeeder extends Seeder
             Cuti::insert([
                 'uuid' => Str::random(36),
                 'pegawai_id' => $faker->numberBetween(1, 10),
-                'jenis_cuti' => $faker->numberBetween(1, 4),
+                'jenis_cuti' => $faker->numberBetween(1, 5),
                 'mulai_cuti' => $faker->date($mulai),
                 'akhir_cuti' => $faker->date($akhir),
                 'keterangan' => $faker->text(200),

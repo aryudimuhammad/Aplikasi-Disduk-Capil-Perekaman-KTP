@@ -1,54 +1,17 @@
-@extends('layouts.login')
-@section('title') Pendaftaran KTP @endsection
-@section('head')
-<style>
-    #imgView {
-        width: 100%;
-        height: 100%;
-    }
-
-    #gambar_nodin {
-        width: 100%;
-        height: 100%;
-    }
-
-    .loadAnimate {
-        animation: setAnimate ease 2.5s infinite;
-    }
-
-    @keyframes setAnimate {
-        0% {
-            color: #000;
-        }
-
-        50% {
-            color: transparent;
-        }
-
-        99% {
-            color: transparent;
-        }
-
-        100% {
-            color: #000;
-        }
-    }
-
-    .custom-file-label {
-        cursor: pointer;
-    }
-</style>
-@endsection
-@section('content')
-<div class="card" style="margin-top: 78px;">
-    <div class="col-xl-12" style="margin-top:20px;">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h4> <b> Form Pendaftaran KTP </b> </h4>
+<div class="modal fade" id="modaledit">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content animated fadeInUp">
+            <div class="modal-header">
+                <h1 class="modal-title"><b>Edit Data KTP</b></h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="card-body">
-                <div id="notifikasi"></div>
-                <form method="POST" enctype="multipart/form-data">
+            <form method="POST">
+                <div class="modal-body">
+                    {{ method_field('put') }}
+                    @csrf
+                    <input type="hidden" id="id" name="id">
                     <div class="col-md-12">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -159,69 +122,27 @@
                                     <option value="4" @if (old('goldar')=='4' ) {{'selected'}} @endif>O</option>
                                 </select>
                             </div>
-                            <div class="col-sm-3">
-                                <label for="foto">Foto</label>
-                                <input type="file" name="foto" id="foto" class="form-control" onchange="document.getElementById('foto').value = this.value;" aria-describedby="foto" value="{{old('foto')}}">
-                            </div>
-                            <div class="col-sm-3" style="margin-top: 35px;">
-                                Belum ada Foto ? <button class="btn btn-info btn-sm">Klik disini</button>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="pict">Foto</label>
+                                <input type="file" name="pict" id="pict" class="form-control" onchange="document.getElementById('pict').value = this.value;" aria-describedby="pict" value="{{old('pict')}}">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2 float-right">
-                        <img src="/images/nopict.png" id="imgView" class="card-img-top img-fluid" style="width: 45%; height:45%; display: block; margin: auto; margin-top:25px;">
-                    </div>
-                    <div class=" col-md-12">
-                        <div class="col-md-3 float-left">
-                            <a class="btn btn-danger btn-user btn-block text-white" href="{{url('/')}}"> <i class="fa fa-arrow-circle-left"></i> Kembali </a>
+                        <div class="col-sm-12">
+                            <img src="/images/nopict.png" id="pict" class="card-img-top img-fluid" style="width: 70%; height:70%; display: block; margin: auto; margin-top:13px;">
                         </div>
-                        <div class="col-md-3 float-left">
-                            <button class="btn btn-warning btn-user btn-block text-white" type="reset"> <i class="fa fa-undo"></i> Reset </button>
-                        </div>
-                        <div class="col-md-6 float-right">
-                            <button class="btn btn-primary btn-user btn-block" type="submit"> <i class="fa fa-share-square"></i> Kirim </button>
+                        <div class="col-sm-12">
+                            <img src="/images/nopict.png" id="gambar_nodin" class="card-img-top img-fluid" style="width: 70%; height:70%; display: block; margin: auto; margin-top:20px;">
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer col-md-12">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
+                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-<script>
-    $("#foto").change(function(event) {
-        fadeInAdd();
-        getURL(this);
-    });
-
-    $("#foto").on('click', function(event) {
-        fadeInAdd();
-    });
-
-    function getURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            var filename = $("#foto").val();
-            filename = filename.substring(filename.lastIndexOf('\\') + 1);
-            reader.onload = function(e) {
-                debugger;
-                $('#imgView').attr('src', e.target.result);
-                $('#imgView').hide();
-                $('#imgView').fadeIn(500);
-                $('.custom-file-label').text(filename);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-        $(".alert").removeClass("loadAnimate").hide();
-    }
-
-    function fadeInAdd() {
-        fadeInAlert();
-    }
-
-    function fadeInAlert(text) {
-        $(".alert").text(text).addClass("loadAnimate");
-    }
-</script>
-@endsection
+</div>

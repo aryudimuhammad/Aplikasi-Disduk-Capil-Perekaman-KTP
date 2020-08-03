@@ -20,7 +20,7 @@ class CreatePensiunsTable extends Migration
             $table->enum('jenis_pensiun', ['1', '2', '3', '4', '5', '6']);
             $table->enum('status_berkas', ['1', '2', '3', '4', '5', '6', '7']);
             $table->text('keterangan');
-            $table->enum('status', ['1', '2']);
+            $table->enum('status', ['1', '2'])->nullable();
             $table->timestamps();
             $table->foreign('pegawai_id')->references('id')->on('pegawais')->onDelete('cascade');
         });
