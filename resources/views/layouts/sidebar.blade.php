@@ -26,9 +26,11 @@
         </div>
         <ul class="sidebar-menu">
             <li class="sidebar-header">Data Master</li>
+            @if(auth()->user()->role == '1')
             <li>
                 <a href="{{route('pegawaiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pegawai </span></a>
             </li>
+            @endif
             <li>
                 <a href="{{route('pensiunIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Pengusulan Pensiun </span></a>
             </li>
@@ -62,8 +64,11 @@
             @endif
             @if(auth()->user()->role == '2')
             <li class="sidebar-header">Setting</li>
-            <li>
-                <a href="{{route('userIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Admin </span></a>
+            <li><a href="{{ route('userIndex') }}"><i class="icon-user"></i>Edit My Profile</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="icon-power mr-2"></i> Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
             @endif
         </ul>

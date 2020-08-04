@@ -13,12 +13,16 @@
                     @csrf
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
+                        @if(auth()->user()->role == 1)
                         <label for="cuti_id">Pilih Pegawai</label>
                         <select name="cuti_id" id="cuti_id" class="form-control">
                             @foreach($cuti as $d)
-                            <option value="{{$d->id}}" @if (old('cuti_id')==$d->cuti_id ) {{'selected'}} @endif>@if($d->jenis_cuti == 3) Sakit @else Bersalin @endif</option>
+                            <option value="{{$d->id}}" @if (old('cuti_id')==$d->cuti_id ) {{'selected'}} @endif> {{$d->pegawai->user->name}} @if($d->jenis_cuti == 3) Sakit @else Bersalin @endif</option>
                             @endforeach
                         </select>
+                        @else
+                        <input type="text" readonly class="form-control" value="{{auth()->user()->name}}">
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="mulai">Tambah Masa Cuti</label>
@@ -40,6 +44,7 @@
                         <label for="keterangan">Keterangan</label>
                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
                     </div>
+                    @if(auth()->user()->role == 1)
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select name="status" id="status" class="form-control">
@@ -47,6 +52,7 @@
                             <option value="2" @if (old('status')==2 ){{'selected'}} @endif> Tidak Diverifikasi</option>
                         </select>
                     </div>
+                    @endif
                     <div class="form-group imgView">
                         <div class="col-sm-6 float-left">
                             <img src="/images/nopict.png" id="pict" class="card-img-top img-fluid" style="width: 70%; height:70%; display: block; margin: auto;">

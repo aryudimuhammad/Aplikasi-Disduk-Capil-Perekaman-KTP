@@ -27,18 +27,20 @@ class DatabaseSeeder extends Seeder
         for ($i = 2; $i <= 4; $i++) {
             User::insert([
                 'uuid' => Str::random(36),
-                'name' => $faker->firstNameMale,
-                'email' => $faker->email,
+                'name' => $faker->firstNameMale + '' + $faker->lastName,
+                'email' => $faker->firstNameMale + '@gmail.com',
                 'password' => Hash::make('123'),
+                'role' => '2'
             ]);
         }
 
         for ($i = 5; $i <= 11; $i++) {
             User::insert([
                 'uuid' => Str::random(36),
-                'name' => $faker->firstNameFemale,
-                'email' => $faker->email,
+                'name' => $faker->firstNameFemale  + '' + $faker->lastName,
+                'email' => $faker->firstNameFemale + '@gmail.com',
                 'password' => Hash::make('123'),
+                'role' => '2'
             ]);
         }
 

@@ -14,11 +14,15 @@
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
                         <label for="pegawai_id">Pilih Pegawai</label>
+                        @if(auth()->user()->role == 1)
                         <select name="pegawai_id" id="pegawai_id" class="form-control">
                             @foreach($pegawai as $d)
                             <option value="{{$d->id}}" @if (old('pegawai_id')==$d->id ){{'selected'}} @endif>{{$d->user->name}}</option>
                             @endforeach
                         </select>
+                        @else
+                        <input type="text" readonly class="form-control" value="{{auth()->user()->name}}">
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="jenis_pensiun">Pilih Jenis Pensiun</label>
@@ -47,6 +51,7 @@
                         <label for="keterangan">Keterangan</label>
                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
                     </div>
+                    @if(auth()->user()->role == 1)
                     <div class="form-group">
                         <label for="status">Pilih Status Verifikasi</label>
                         <select name="status" id="status" class="form-control">
@@ -54,6 +59,7 @@
                             <option value="2" @if (old('status')==2 ){{'selected'}} @endif>Tidak Diverifikasi</option>
                         </select>
                     </div>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>

@@ -19,7 +19,7 @@ class PensiunSeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             Pensiun::insert([
                 'uuid' => Str::random(36),
-                'pegawai_id' => $faker->numberBetween(1, 10),
+                'pegawai_id' => $i,
                 'jenis_pensiun' => $faker->numberBetween(1, 6),
                 'status_berkas' => $faker->numberBetween(1, 7),
                 'keterangan' => $faker->text(200),

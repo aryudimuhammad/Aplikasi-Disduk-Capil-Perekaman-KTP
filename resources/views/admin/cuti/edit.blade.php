@@ -13,12 +13,16 @@
                     @csrf
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
+                        @if(auth()->user()->role == 2)
+                        <input type="text" class="form-control" readonly value="{{auth()->user()->name}}">
+                        @else
                         <label for="pegawai_id">Pilih Pegawai</label>
                         <select name="pegawai_id" id="pegawai_id" class="form-control">
                             @foreach($pegawai as $d)
                             <option value="{{$d->id}}" @if (old('pegawai_id')==$d->id ) {{'selected'}} @endif>{{$d->user->name}}</option>
                             @endforeach
                         </select>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="jenis_cuti">Pilih Jenis Cuti</label>
@@ -46,6 +50,7 @@
                         <label for="keterangan">Keterangan</label>
                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
                     </div>
+                    @if(auth()->user()->role == 1)
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select name="status" id="status" class="form-control">
@@ -53,6 +58,7 @@
                             <option value="2" @if (old('status')==2 ){{'selected'}} @endif> Tidak Diverifikasi</option>
                         </select>
                     </div>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>

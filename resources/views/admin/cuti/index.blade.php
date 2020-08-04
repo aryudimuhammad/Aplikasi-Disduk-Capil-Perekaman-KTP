@@ -44,6 +44,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(auth()->user()->role == 2)
+                                    @foreach($datarole2 as $d)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d->pegawai->nip}}</td>
+                                        <td>{{$d->pegawai->user->name}}</td>
+                                        <td>@if($d->jenis_cuti == 1) Cuti Tahunan @elseif($d->jenis_cuti == 2 ) Cuti Nikah @elseif($d->jenis_cuti == 3 ) Cuti Sakit @elseif($d->jenis_cuti == 4 ) Cuti Bersalin @elseif($d->jenis_cuti == 5 ) Cuti Karena Alasan Penting @else - @endif</td>
+                                        <td>{{carbon\carbon::parse($d->mulai_cuti)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir_cuti)->translatedformat('d F Y')}}</td>
+                                        <td>{{$d->keterangan}}</td>
+                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>
+                                            @if($d->status == 1)
+                                            <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-status="{{$d->status}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            @else
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-status="{{$d->status}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @else
                                     @foreach($data as $d)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
@@ -59,6 +81,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
+                                    @endif
                             </table>
                         </div>
                     </div>

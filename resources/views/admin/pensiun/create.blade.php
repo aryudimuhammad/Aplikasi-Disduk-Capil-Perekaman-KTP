@@ -12,11 +12,15 @@
                     @csrf
                     <div class="form-group">
                         <label for="pegawai_id">Pilih Pegawai</label>
+                        @if(auth()->user()->role == 1)
                         <select name="pegawai_id" id="pegawai_id" class="form-control">
                             @foreach($pegawai as $d)
                             <option value="{{$d->id}}" @if (old('pegawai_id')==$d->id ){{'selected'}} @endif>{{$d->user->name}}</option>
                             @endforeach
                         </select>
+                        @else
+                        <input type="text" readonly class="form-control" value="{{auth()->user()->name}}">
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="jenis_pensiun">Pilih Jenis Pensiun</label>
