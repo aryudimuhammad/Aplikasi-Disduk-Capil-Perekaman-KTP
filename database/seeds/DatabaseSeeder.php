@@ -21,14 +21,15 @@ class DatabaseSeeder extends Seeder
             'uuid' => Str::random(36),
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
+            'foto' => 'default.png',
             'password' => Hash::make('123'),
         ]);
 
         for ($i = 2; $i <= 4; $i++) {
             User::insert([
                 'uuid' => Str::random(36),
-                'name' => $faker->firstNameMale + '' + $faker->lastName,
-                'email' => $faker->firstNameMale + '@gmail.com',
+                'name' => "$faker->firstNameFemale $faker->lastName",
+                'email' => $faker->email,
                 'password' => Hash::make('123'),
                 'role' => '2'
             ]);
@@ -37,8 +38,8 @@ class DatabaseSeeder extends Seeder
         for ($i = 5; $i <= 11; $i++) {
             User::insert([
                 'uuid' => Str::random(36),
-                'name' => $faker->firstNameFemale  + '' + $faker->lastName,
-                'email' => $faker->firstNameFemale + '@gmail.com',
+                'name' => "$faker->firstNameFemale $faker->lastName",
+                'email' => $faker->email,
                 'password' => Hash::make('123'),
                 'role' => '2'
             ]);

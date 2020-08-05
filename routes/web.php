@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
     Route::get('/user', 'UserController@index')->name('userIndex');
     Route::delete('/user/delete/{id}', 'UserController@delete')->name('userDelete');
     Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/profile', 'HomeController@profile')->name('profileIndex');
+    Route::post('/profile', 'HomeController@update')->name('profileUpdate');
 });
 
 Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
