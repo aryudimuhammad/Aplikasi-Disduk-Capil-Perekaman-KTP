@@ -7,8 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
                     @csrf
                     <div class="form-group">
                         <label for="nip">NIP</label>
@@ -105,6 +105,10 @@
                         <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">{{old('alamat')}}</textarea>
                     </div>
                     <div class="form-group">
+                        <label for="kependudukan">Kependudukan</label>
+                        <input type="text" class="form-control" id="kependudukan" name="kependudukan" placeholder="Kependudukan" value="{{old('kependudukan')}}">
+                    </div>
+                    <div class="form-group">
                         <label for="kodepos">Kode Pos</label>
                         <input type="text" class="form-control" id="kodepos" name="kodepos" placeholder="Masukkan Kode Pos" value="{{old('kodepos')}}">
                     </div>
@@ -116,16 +120,21 @@
                         <label for="tgl_lahir">Tanggal Lahir</label>
                         <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Masukkan Tanggal Lahir" value="{{old('tgl_lahir')}}">
                     </div>
-                    <h6 class="form-group">Tempat lahir</h6>
                     <div class="form-group">
+                        <label for="tempat_lahir">Tempat lahir</label>
                         <textarea class="form-control" id="tempat_lahir" name="tempat_lahir" rows="3" placeholder="Masukkan Tempat lahir">{{old('tempat_lahir')}}</textarea>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
-            </div>
+                    <div class="form-group">
+                        <label for="foto">Foto</label>
+                        <input type="file" class="form-control" id="foto" name="foto" value="{{old('foto')}}">
+                        <p>Note : Masukkan Foto Jika Ada Mempunyai Foto.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

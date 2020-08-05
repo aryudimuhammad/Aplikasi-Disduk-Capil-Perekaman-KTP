@@ -67,6 +67,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(auth()->user()->role == 2)
                     @if($cutifirst == !null)
                     @if($cutifirst->jenis_cuti == 3 && 4 )
                     <div class="card-body">
@@ -186,6 +187,68 @@
                             <div class="swal2-timer-progress-bar-container">
                                 <div class="swal2-timer-progress-bar" style="display: none;"></div>
                             </div>
+                        </div>
+                    </div>
+                    @endif
+                    @else
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="default-datatable" class="table table-bordered nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>NIP</th>
+                                        <th>Nama Pegawai</th>
+                                        <th>Bukti</th>
+                                        <th>Jenis Cuti</th>
+                                        <th>Tambah Masa Cuti</th>
+                                        <th>Keterangan</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(auth()->user()->role == 2)
+                                    @foreach($datarole2 as $d)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d->cuti->pegawai->nip}}</td>
+                                        <td>{{$d->cuti->pegawai->user->name}}</td>
+                                        <td>{{$d->bukti}}</td>
+                                        <td>@if($d->cuti->jenis_cuti == 3 ) Cuti Sakit @elseif($d->cuti->jenis_cuti == 4 ) Cuti Bersalin @else - @endif</td>
+                                        <td>{{carbon\carbon::parse($d->mulai)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir)->translatedformat('d F Y')}}</td>
+                                        <td>{{$d->keterangan}}</td>
+                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>
+                                            @if($d->status == 1)
+                                            <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-cuti_id="{{$d->cuti_id}}" data-mulai="{{$d->mulai}}" data-akhir="{{$d->akhir}}" data-pict="{{$d->bukti}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            @else
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-cuti_id="{{$d->cuti_id}}" data-mulai="{{$d->mulai}}" data-akhir="{{$d->akhir}}" data-pict="{{$d->bukti}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @else
+                                    @foreach($data as $d)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d->cuti->pegawai->nip}}</td>
+                                        <td>{{$d->cuti->pegawai->user->name}}</td>
+                                        <td>{{$d->bukti}}</td>
+                                        <td>@if($d->cuti->jenis_cuti == 3 ) Cuti Sakit @elseif($d->cuti->jenis_cuti == 4 ) Cuti Bersalin @else - @endif</td>
+                                        <td>{{carbon\carbon::parse($d->mulai)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir)->translatedformat('d F Y')}}</td>
+                                        <td>{{$d->keterangan}}</td>
+                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-cuti_id="{{$d->cuti_id}}" data-mulai="{{$d->mulai}}" data-akhir="{{$d->akhir}}" data-pict="{{$d->bukti}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                            </table>
                         </div>
                     </div>
                     @endif

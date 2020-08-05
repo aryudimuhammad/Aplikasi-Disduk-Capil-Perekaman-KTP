@@ -50,7 +50,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$d->pegawai->nip}}</td>
                                         <td>{{$d->pegawai->user->name}}</td>
-                                        <td>@if($d->jenis_pensiun == 1 ) Batas Usia Pensiun @elseif($d->jenis_pensiun == 2) Atas Permintaan Sendiri @elsif($d->jenis_pensiun == 3 ) Duda @elseif($d->jenis_pensiun == 4) Janda @elseif($d->jenis_pensiun == 5) Meninggal Dunia @else Yatim @endif</td>
+                                        <td>@if($d->jenis_pensiun == 1 ) Batas Usia Pensiun @elseif($d->jenis_pensiun == 2) Atas Permintaan Sendiri @elseif($d->jenis_pensiun == 3 ) Duda @elseif($d->jenis_pensiun == 4) Janda @elseif($d->jenis_pensiun == 5) Meninggal Dunia @else Yatim @endif</td>
                                         <td>@if($d->status_berkas ==1 ) Proses BKD @elseif($d->status_berkas == 2) Proses BKD BTL @elseif($d->status_berkas == 3) Proses BKN @elseif($d->status_berkas == 4) Proses BKN BTL @elseif($d->status_berkas == 5 ) Masih Pertek @elseif($d->status_berkas == 6 ) Proses TTD Gurbernur @else SK Pensiun Sudah Jadi @endif</td>
                                         <td>{{$d->keterangan}}</td>
                                         <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2) Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
@@ -66,7 +66,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$d->pegawai->nip}}</td>
                                         <td>{{$d->pegawai->user->name}}</td>
-                                        <td>@if($d->jenis_pensiun == 1 ) Batas Usia Pensiun @elseif($d->jenis_pensiun == 2) Atas Permintaan Sendiri @elsif($d->jenis_pensiun == 3 ) Duda @elseif($d->jenis_pensiun == 4) Janda @elseif($d->jenis_pensiun == 5) Meninggal Dunia @else Yatim @endif</td>
+                                        <td>@if($d->jenis_pensiun == 1 ) Batas Usia Pensiun @elseif($d->jenis_pensiun == 2) Atas Permintaan Sendiri @elseif($d->jenis_pensiun == 3 ) Duda @elseif($d->jenis_pensiun == 4) Janda @elseif($d->jenis_pensiun == 5) Meninggal Dunia @else Yatim @endif</td>
                                         <td>@if($d->status_berkas ==1 ) Proses BKD @elseif($d->status_berkas == 2) Proses BKD BTL @elseif($d->status_berkas == 3) Proses BKN @elseif($d->status_berkas == 4) Proses BKN BTL @elseif($d->status_berkas == 5 ) Masih Pertek @elseif($d->status_berkas == 6 ) Proses TTD Gurbernur @else SK Pensiun Sudah Jadi @endif</td>
                                         <td>{{$d->keterangan}}</td>
                                         <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2) Tidak Diverifikasi @else Belum Diverifikasi @endif </td>

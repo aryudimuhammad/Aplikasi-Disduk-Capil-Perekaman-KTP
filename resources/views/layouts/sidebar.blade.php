@@ -25,6 +25,10 @@
             </div>
         </div>
         <ul class="sidebar-menu">
+            <li class="sidebar-header">Dashboard</li>
+            <li>
+                <a href="{{route('home')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-view-list-alt"></i> <span> Dashboard </span></a>
+            </li>
             <li class="sidebar-header">Data Master</li>
             @if(auth()->user()->role == '1')
             <li>
