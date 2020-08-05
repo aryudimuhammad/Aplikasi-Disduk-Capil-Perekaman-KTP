@@ -24,7 +24,7 @@ class PegawaiController extends Controller
         $golongan = Golongan::latest()->get();
         $jabatan = Jabatan::latest()->get();
 
-        return view('admin.pegawai.index', compact('data', 'instansi', 'satuan', 'unit', 'golongan', 'jabatan'));
+        return view('admin.pegawaii.index', compact('data', 'instansi', 'satuan', 'unit', 'golongan', 'jabatan'));
     }
 
     public function store(Request $request)
@@ -101,7 +101,7 @@ class PegawaiController extends Controller
     {
         $data = Pegawai::where('uuid', $id)->first();
 
-        return view('admin.pegawai.show', compact('data'));
+        return view('admin.pegawaii.show', compact('data'));
     }
 
     public function delete($id)

@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::delete('/admin/jabatan/delete/{id}', 'JabatanController@delete')->name('jabatanDelete');
 
     Route::get('/admin/pegawai', 'PegawaiController@index')->name('pegawaiIndex');
-    Route::post('/admin/pegawai', 'PegawaiController@store')->name('pegawaistore');
+    Route::post('/admin/pegawai', 'PegawaiController@store')->name('pegawaiStore');
     Route::put('/admin/pegawai', 'PegawaiController@update')->name('pegawaiUpdate');
     Route::delete('/admin/pegawai/delete/{id}', 'PegawaiController@delete')->name('pegawaiDelete');
     Route::get('/admin/pegawai/show/{id}', 'PegawaiController@show')->name('pegawaiShow');

@@ -8,7 +8,11 @@
         </div>
         <div class="user-details">
             <div class="media align-items-center user-pointer collapsed" data-toggle="collapse" data-target="#user-dropdown">
-                <div class="avatar"><img class="mr-3 side-user-img" @if(auth()->user()->foto == null ) src="{{url('foto/default.png')}}" @else src="foto/{{auth()->user()->foto}}" @endif class="img-circle"></div>
+                @if(auth()->user()->foto == null)
+                <div class="avatar"><img class="mr-3 side-user-img" src="{{url('foto/default.png')}}" class="img-circle"></div>
+                @else
+                <div class="avatar"><img class="mr-3 side-user-img" src="foto/{{ Auth::user()->foto }}" class="img-circle"></div>
+                @endif
                 <div class="media-body">
                     <h6 class="side-user-name">{{Auth::user()->name}}</h6>
                 </div>
@@ -29,7 +33,7 @@
             <li>
                 <a href="{{route('home')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-view-list-alt"></i> <span> Dashboard </span></a>
             </li>
-            <li class="sidebar-header">Data Master</li>
+            <li class="sidebar-master">Data Master</li>
             @if(auth()->user()->role == '1')
             <li>
                 <a href="{{route('pegawaiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pegawai </span></a>
@@ -59,7 +63,7 @@
                 </ul>
             </li>
             @endif
-            <li class="sidebar-header">Setting</li>
+            <li class="sidebar-setting">Setting</li>
             <li><a href="{{ route('userIndex') }}"><i class="zmdi zmdi-settings"> </i> Setting</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="zmdi zmdi-power-setting"></i> Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
