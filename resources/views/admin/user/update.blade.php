@@ -16,7 +16,7 @@
     <div class="form-group row">
         <label class="col-lg-3 col-form-label form-control-label">Password</label>
         <div class="col-lg-9">
-            <input class="form-control" type="password" name="password" placeholder="Masukkan Password">
+            <input class="form-control" type="password" name="password_baru" placeholder="Masukkan Password">
             <p>Note : Masukkan Password Jika Ingin Mengubah Password</p>
         </div>
     </div>
@@ -105,13 +105,13 @@
             <input class="form-control" type="text" value="{{Auth()->user()->pegawai->kodepos}}" placeholder="Kependudukan">
         </div>
     </div>
+    @endif
     <div class="form-group row">
         <label class="col-lg-3 col-form-label form-control-label">Change profile</label>
         <div class="col-lg-9">
-            <input class="form-control" type="file">
+            <input class="form-control" type="file" name="foto" id="foto">
         </div>
     </div>
-    @endif
     <div class="form-group row">
         <label class="col-lg-3 col-form-label form-control-label"></label>
         <div class="col-lg-9">

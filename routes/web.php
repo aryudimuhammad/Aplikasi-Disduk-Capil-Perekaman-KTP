@@ -42,8 +42,6 @@ Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
     Route::patch('/admin/perpanjang/cuti', 'PerpanjangController@status')->name('perpanjangStatus');
     Route::delete('/admin/perpanjang/cuti/delete/{id}', 'PerpanjangController@delete')->name('perpanjangDelete');
 
-    // Route::get('/user', 'UserController@index')->name('userIndex');
-    // Route::delete('/user/delete/{id}', 'UserController@delete')->name('userDelete');
     //Dashboard dan Profile
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile', 'HomeController@profile')->name('profileIndex');

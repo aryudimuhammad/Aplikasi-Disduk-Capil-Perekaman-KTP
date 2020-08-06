@@ -256,7 +256,7 @@
                                                 <!--/row-->
                                             </div>
                                             <div class="tab-pane" id="edit">
-                                                @include('admin.admin.update')
+                                                @include('admin.user.update')
                                             </div>
                                         </div>
                                     </div>
