@@ -19,9 +19,9 @@ class CreatePerpanjangsTable extends Migration
             $table->unsignedBigInteger('cuti_id');
             $table->date('mulai');
             $table->date('akhir');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->string('bukti');
-            $table->enum('status', ['1', '2'])->nullable();
+            $table->enum('status', ['1', '2', '3'])->default('1');
             $table->timestamps();
             $table->foreign('cuti_id')->references('id')->on('cutis')->onDelete('cascade');
         });

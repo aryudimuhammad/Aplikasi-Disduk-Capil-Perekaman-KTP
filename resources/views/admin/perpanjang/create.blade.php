@@ -35,12 +35,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="bukti">Bukti</label>
-                        <input type="file" name="bukti" id="bukti" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label for="keterangan">Keterangan</label>
                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bukti">Bukti</label>
+                        <input type="file" name="bukti" id="bukti" class="form-control">
                     </div>
                     <div class="form-group">
                         <img src="/images/nopict.png" id="imgView" class="card-img-top img-fluid" style="width: 30%; height: 30%; display: block; margin: auto;">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
                 </div>
             </form>
         </div>

@@ -40,12 +40,12 @@ Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
     Route::post('/admin/perpanjang/cuti', 'PerpanjangController@store')->name('perpanjangStore');
     Route::put('/admin/perpanjang/cuti', 'PerpanjangController@update')->name('perpanjangUpdate');
     Route::patch('/admin/perpanjang/cuti', 'PerpanjangController@status')->name('perpanjangStatus');
-    Route::delete('/admin/perpajnagan/cuti/delete/{id}', 'PerpanjangController@delete')->name('perpanjangDelete');
+    Route::delete('/admin/perpanjang/cuti/delete/{id}', 'PerpanjangController@delete')->name('perpanjangDelete');
 
     // Route::get('/user', 'UserController@index')->name('userIndex');
     // Route::delete('/user/delete/{id}', 'UserController@delete')->name('userDelete');
-    // Route::get('/home', 'HomeController@index')->name('home');
-
+    //Dashboard dan Profile
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile', 'HomeController@profile')->name('profileIndex');
     Route::post('/profile', 'HomeController@update')->name('profileUpdate');
 });

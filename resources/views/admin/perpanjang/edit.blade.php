@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     {{ method_field('put') }}
                     @csrf
@@ -37,22 +37,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="pict">Bukti</label>
-                        <input type="file" name="pict" id="pict" class="form-control">
-                    </div>
-                    <div class="form-group">
                         <label for="keterangan">Keterangan</label>
                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
                     </div>
-                    @if(auth()->user()->role == 1)
                     <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control">
-                            <option value="1" @if (old('status')==1 ){{'selected'}} @endif> Verifikasi</option>
-                            <option value="2" @if (old('status')==2 ){{'selected'}} @endif> Tidak Diverifikasi</option>
-                        </select>
+                        <label for="pict">Bukti</label>
+                        <input type="file" name="pict" class="form-control" id="pict" class="form-control">
                     </div>
-                    @endif
                     <div class="form-group imgView">
                         <div class="col-sm-6 float-left">
                             <img src="/images/nopict.png" id="pict" class="card-img-top img-fluid" style="width: 70%; height:70%; display: block; margin: auto;">
@@ -64,7 +55,7 @@
                 </div>
                 <div class="modal-footer" style="margin-top: 150px;">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
                 </div>
             </form>
         </div>

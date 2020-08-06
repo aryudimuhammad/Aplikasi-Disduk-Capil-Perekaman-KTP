@@ -67,7 +67,7 @@
             </li>
             @endif
             <li class="sidebar-header">Setting</li>
-            <li><a href="{{ route('userIndex') }}"><i class="zmdi zmdi-settings"> </i> Setting</a></li>
+            <li><a href="{{ route('profileIndex') }}"><i class="zmdi zmdi-settings"> </i> Setting</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="zmdi zmdi-power-setting"></i> Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

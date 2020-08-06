@@ -218,7 +218,7 @@
                                         <td>@if($d->cuti->jenis_cuti == 3 ) Cuti Sakit @elseif($d->cuti->jenis_cuti == 4 ) Cuti Bersalin @else - @endif</td>
                                         <td>{{carbon\carbon::parse($d->mulai)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir)->translatedformat('d F Y')}}</td>
                                         <td>{{$d->keterangan}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                                         <td>
                                             @if($d->status == 1)
                                             <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
@@ -236,12 +236,13 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$d->cuti->pegawai->nip}}</td>
                                         <td>{{$d->cuti->pegawai->user->name}}</td>
-                                        <td>{{$d->bukti}}</td>
+                                        <td class="text-center"><img src="{{url('bukti/'.$d->bukti.'')}}" alt="bukti" class="customer-img" style="border-radius: 10%;" width="80px;" height="8 0px;"></td>
                                         <td>@if($d->cuti->jenis_cuti == 3 ) Cuti Sakit @elseif($d->cuti->jenis_cuti == 4 ) Cuti Bersalin @else - @endif</td>
                                         <td>{{carbon\carbon::parse($d->mulai)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir)->translatedformat('d F Y')}}</td>
                                         <td>{{$d->keterangan}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                                         <td>
+                                            <button class="btn btn-outline-info btn-sm" data-id="{{$d->uuid}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-edit">Ubah Status</i> </button>
                                             <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-cuti_id="{{$d->cuti_id}}" data-mulai="{{$d->mulai}}" data-akhir="{{$d->akhir}}" data-pict="{{$d->bukti}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
                                         </td>
@@ -261,6 +262,7 @@
 </div>
 @include('admin.perpanjang.create')
 @include('admin.perpanjang.edit')
+@include('admin.perpanjang.status')
 @endsection
 @section('script')
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
@@ -283,7 +285,6 @@
         let mulai = button.data('mulai')
         let akhir = button.data('akhir')
         let keterangan = button.data('keterangan')
-        let status = button.data('status')
         let modal = $(this)
 
         modal.find('.modal-body #id').val(id)
@@ -292,6 +293,17 @@
         modal.find('.modal-body #mulai').val(mulai);
         modal.find('.modal-body #akhir').val(akhir);
         modal.find('.modal-body #keterangan').val(keterangan);
+    })
+</script>
+
+<script>
+    $('#modalstatus').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id')
+        let status = button.data('status')
+        let modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
         modal.find('.modal-body #status').val(status);
     })
 </script>
@@ -318,7 +330,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{url('/admin/perpanjang/delete')}}" + '/' + id,
+                    url: "{{url('/admin/perpanjang/cuti/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',
