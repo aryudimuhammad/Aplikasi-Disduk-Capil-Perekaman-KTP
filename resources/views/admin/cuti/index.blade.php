@@ -21,11 +21,13 @@
                         <i class="fa fa-table"></i> Data Pengusulan Cuti
                         <div class="btn-group float-sm-right">
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah"> <i class="fa fa-plus"> </i> Tambah Data</button> &emsp13;
+                            @if(auth()->user()->role == 1)
                             <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
                             <div class="dropdown-menu">
                                 <a href="javaScript:void();" class="dropdown-item">Keseluruhan</a>
                                 <a href="javaScript:void();" class="dropdown-item">Cetak Berdasarkan</a>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body">
@@ -55,9 +57,8 @@
                                         <td>{{$d->keterangan}}</td>
                                         <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                                         <td>
-                                            @if($d->status == 1)
+                                            @if($d->status == 2)
                                             <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             @else
                                             <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>

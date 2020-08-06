@@ -13,6 +13,7 @@
                     <div class="form-group">
                         @if(auth()->user()->role == 2)
                         <input type="text" readonly class="form-control" value="{{auth()->user()->name}}">
+                        <input type="hidden" name="pegawai_id" id="pegawai_id" value="{{auth()->user()->pegawai->id}}">
                         @else
                         <label for="pegawai_id">Pilih Pegawai</label>
                         <select name="pegawai_id" id="pegawai_id" class="form-control">

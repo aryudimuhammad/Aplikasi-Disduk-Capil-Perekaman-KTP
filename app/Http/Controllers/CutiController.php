@@ -58,7 +58,11 @@ class CutiController extends Controller
         }
         $data->save();
 
-        return back()->with('success', 'Terkirim, Data Berhasil Disimpan.');
+        if (auth()->user()->role == 1) {
+            return back()->with('success', 'Terkirim, Data Berhasil Disimpan.');
+        } else {
+            return back()->with('success', 'Data Berhasil Disimpan.');
+        }
     }
 
     public function update(Request $request)
