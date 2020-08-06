@@ -16,14 +16,12 @@ class CreatePerpanjangsTable extends Migration
         Schema::create('perpanjangs', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->length(36);
-            $table->unsignedBigInteger('cuti_id');
             $table->date('mulai');
             $table->date('akhir');
             $table->string('keterangan')->nullable();
             $table->string('bukti');
             $table->enum('status', ['1', '2', '3'])->default('1');
             $table->timestamps();
-            $table->foreign('cuti_id')->references('id')->on('cutis')->onDelete('cascade');
         });
     }
 

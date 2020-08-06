@@ -13,6 +13,6 @@ class Perpanjang extends Model
 
     public function cuti()
     {
-        return $this->belongsTo(Cuti::class);
+        return $this->hasOne(Cuti::class);
     }
 }

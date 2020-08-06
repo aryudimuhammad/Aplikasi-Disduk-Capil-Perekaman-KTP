@@ -17,6 +17,7 @@ class CreateCutisTable extends Migration
             $table->id();
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('pegawai_id');
+            $table->unsignedBigInteger('perpanjang_id')->nullable();
             $table->enum('jenis_cuti', ['1', '2', '3', '4', '5']);
             $table->date('mulai_cuti');
             $table->date('akhir_cuti');
@@ -24,6 +25,7 @@ class CreateCutisTable extends Migration
             $table->enum('status', ['1', '2', '3'])->default('1');
             $table->timestamps();
             $table->foreign('pegawai_id')->references('id')->on('pegawais')->onDelete('cascade');
+            $table->foreign('perpanjang_id')->references('id')->on('perpanjangs')->onDelete('cascade');
         });
     }
 

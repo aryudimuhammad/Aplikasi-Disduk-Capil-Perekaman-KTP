@@ -22,7 +22,6 @@ class PerpanjangSeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             Perpanjang::insert([
                 'uuid' => Str::random(36),
-                'cuti_id' => $i,
                 'mulai' => $faker->date($mulai),
                 'akhir' => $faker->date($akhir),
                 'bukti' => 'default.png',

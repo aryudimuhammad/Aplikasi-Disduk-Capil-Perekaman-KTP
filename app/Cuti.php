@@ -18,6 +18,6 @@ class Cuti extends Model
 
     public function perpanjang()
     {
-        return $this->hasOne(Perpanjang::class);
+        return $this->belongsTo(Perpanjang::class);
     }
 }

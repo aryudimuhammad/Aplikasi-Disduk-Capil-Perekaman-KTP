@@ -11,16 +11,12 @@
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
-                        @if(auth()->user()->role == 1)
                         <label for="cuti_id">Pilih Pegawai</label>
                         <select name="cuti_id" id="cuti_id" class="form-control">
                             @foreach($cuti as $d)
                             <option value="{{$d->id}}" @if (old('cuti_id')==$d->cuti_id ) {{'selected'}} @endif> {{$d->pegawai->user->name}} @if($d->jenis_cuti == 3) Sakit @else Bersalin @endif</option>
                             @endforeach
                         </select>
-                        @else
-                        <input type="text" readonly class="form-control" value="{{auth()->user()->name}}">
-                        @endif
                     </div>
                     <div class="form-group">
                         <label for="mulai">Tambah Masa Cuti</label>
