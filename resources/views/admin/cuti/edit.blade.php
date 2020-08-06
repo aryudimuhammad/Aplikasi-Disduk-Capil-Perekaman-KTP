@@ -38,11 +38,11 @@
                         <label for="mulai_cuti">Lama Cuti</label>
                         <div id="dateragne-picker">
                             <div class="input-daterange input-group">
-                                <input type="date" class="form-control" name="mulai_cuti" id="mulai_cuti">
+                                <input type="date" class="form-control" name="mulai_cuti" id="mulai_cuti" value="{{old('mulai_cuti')}}">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">to</span>
                                 </div>
-                                <input type="date" class="form-control" name="akhir_cuti" id="akhir_cuti">
+                                <input type="date" class="form-control" name="akhir_cuti" id="akhir_cuti" value="{{old('akhir_cuti')}}">
                             </div>
                         </div>
                     </div>
@@ -50,19 +50,10 @@
                         <label for="keterangan">Keterangan</label>
                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
                     </div>
-                    @if(auth()->user()->role == 1)
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control">
-                            <option value="1" @if (old('status')==1 ){{'selected'}} @endif> Verifikasi</option>
-                            <option value="2" @if (old('status')==2 ){{'selected'}} @endif> Tidak Diverifikasi</option>
-                        </select>
-                    </div>
-                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
                 </div>
             </form>
         </div>

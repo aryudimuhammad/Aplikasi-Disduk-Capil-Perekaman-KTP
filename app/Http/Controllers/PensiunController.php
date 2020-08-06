@@ -55,7 +55,7 @@ class PensiunController extends Controller
             Mail::to($data->pegawai->user->email)->send(new VerifikasiPensiun($data));
         }
 
-        return back()->with('success', 'Data Berhasil Disimpan.');
+        return back()->with('success', 'Terkirim, Data Berhasil Disimpan.');
     }
 
     public function update(Request $request)

@@ -36,11 +36,11 @@
                         <label for="mulai_cuti">Lama Cuti</label>
                         <div id="dateragne-picker">
                             <div class="input-daterange input-group">
-                                <input type="date" class="form-control" name="mulai_cuti">
+                                <input type="date" class="form-control" name="mulai_cuti" value="{{old('mulai_cuti')}}">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">to</span>
                                 </div>
-                                <input type="date" class="form-control" name="akhir_cuti">
+                                <input type="date" class="form-control" name="akhir_cuti" value="{{old('akhir_cuti')}}">
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
                 </div>
             </form>
         </div>

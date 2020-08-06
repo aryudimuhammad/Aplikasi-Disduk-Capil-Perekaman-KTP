@@ -53,13 +53,13 @@
                                         <td>@if($d->jenis_cuti == 1) Cuti Tahunan @elseif($d->jenis_cuti == 2 ) Cuti Nikah @elseif($d->jenis_cuti == 3 ) Cuti Sakit @elseif($d->jenis_cuti == 4 ) Cuti Bersalin @elseif($d->jenis_cuti == 5 ) Cuti Karena Alasan Penting @else - @endif</td>
                                         <td>{{carbon\carbon::parse($d->mulai_cuti)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir_cuti)->translatedformat('d F Y')}}</td>
                                         <td>{{$d->keterangan}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                                         <td>
                                             @if($d->status == 1)
                                             <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-status="{{$d->status}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             @else
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-status="{{$d->status}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
                                             @endif
                                         </td>
@@ -74,9 +74,10 @@
                                         <td>@if($d->jenis_cuti == 1) Cuti Tahunan @elseif($d->jenis_cuti == 2 ) Cuti Nikah @elseif($d->jenis_cuti == 3 ) Cuti Sakit @elseif($d->jenis_cuti == 4 ) Cuti Bersalin @elseif($d->jenis_cuti == 5 ) Cuti Karena Alasan Penting @else - @endif</td>
                                         <td>{{carbon\carbon::parse($d->mulai_cuti)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir_cuti)->translatedformat('d F Y')}}</td>
                                         <td>{{$d->keterangan}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2 )Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                                         <td>
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-status="{{$d->status}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="btn btn-outline-info btn-sm" data-id="{{$d->uuid}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-edit">Ubah Status</i> </button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-keterangan="{{$d->keterangan}}" data-akhir_cuti="{{$d->akhir_cuti}}" data-mulai_cuti="{{$d->mulai_cuti}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_cuti="{{$d->jenis_cuti}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
                                         </td>
                                     </tr>
@@ -94,6 +95,7 @@
 </div>
 @include('admin.cuti.create')
 @include('admin.cuti.edit')
+@include('admin.cuti.status')
 @endsection
 @section('script')
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
@@ -116,7 +118,6 @@
         let mulai_cuti = button.data('mulai_cuti')
         let akhir_cuti = button.data('akhir_cuti')
         let keterangan = button.data('keterangan')
-        let status = button.data('status')
         let modal = $(this)
 
         modal.find('.modal-body #id').val(id)
@@ -125,6 +126,17 @@
         modal.find('.modal-body #mulai_cuti').val(mulai_cuti);
         modal.find('.modal-body #akhir_cuti').val(akhir_cuti);
         modal.find('.modal-body #keterangan').val(keterangan);
+    })
+</script>
+
+<script>
+    $('#modalstatus').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id')
+        let status = button.data('status')
+        let modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
         modal.find('.modal-body #status').val(status);
     })
 </script>
