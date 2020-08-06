@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
     Route::get('/admin/pensiun', 'PensiunController@index')->name('pensiunIndex');
     Route::post('/admin/pensiun', 'PensiunController@store')->name('pensiunstore');
     Route::put('/admin/pensiun', 'PensiunController@update')->name('pensiunUpdate');
+    Route::patch('/admin/pensiun', 'PensiunController@status')->name('pensiunStatus');
     Route::delete('/admin/pensiun/delete/{id}', 'PensiunController@delete')->name('pensiunDelete');
 
     Route::get('/admin/cuti', 'CutiController@index')->name('cutiIndex');

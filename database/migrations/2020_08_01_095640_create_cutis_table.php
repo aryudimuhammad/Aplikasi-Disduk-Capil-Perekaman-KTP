@@ -21,7 +21,7 @@ class CreateCutisTable extends Migration
             $table->date('mulai_cuti');
             $table->date('akhir_cuti');
             $table->text('keterangan');
-            $table->enum('status', ['1', '2'])->nullable();
+            $table->enum('status', ['1', '2', '3'])->default('1');
             $table->timestamps();
             $table->foreign('pegawai_id')->references('id')->on('pegawais')->onDelete('cascade');
         });

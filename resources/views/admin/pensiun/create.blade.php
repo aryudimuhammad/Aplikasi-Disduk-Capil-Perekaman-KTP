@@ -52,7 +52,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Simpan</button>
                 </div>
             </form>
         </div>

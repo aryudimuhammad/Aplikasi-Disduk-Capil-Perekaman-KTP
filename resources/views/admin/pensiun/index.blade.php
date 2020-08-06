@@ -53,8 +53,9 @@
                                         <td>@if($d->jenis_pensiun == 1 ) Batas Usia Pensiun @elseif($d->jenis_pensiun == 2) Atas Permintaan Sendiri @elseif($d->jenis_pensiun == 3 ) Duda @elseif($d->jenis_pensiun == 4) Janda @elseif($d->jenis_pensiun == 5) Meninggal Dunia @else Yatim @endif</td>
                                         <td>@if($d->status_berkas ==1 ) Proses BKD @elseif($d->status_berkas == 2) Proses BKD BTL @elseif($d->status_berkas == 3) Proses BKN @elseif($d->status_berkas == 4) Proses BKN BTL @elseif($d->status_berkas == 5 ) Masih Pertek @elseif($d->status_berkas == 6 ) Proses TTD Gurbernur @else SK Pensiun Sudah Jadi @endif</td>
                                         <td>{{$d->keterangan}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2) Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2) Terverifikasi @else Tidak Diverifikasi @endif </td>
                                         <td>
+                                            <button class="btn btn-outline-info btn-sm" data-id="{{$d->uuid}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-edit">Ubah Status</i> </button>
                                             <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
                                         </td>
@@ -69,15 +70,15 @@
                                         <td>@if($d->jenis_pensiun == 1 ) Batas Usia Pensiun @elseif($d->jenis_pensiun == 2) Atas Permintaan Sendiri @elseif($d->jenis_pensiun == 3 ) Duda @elseif($d->jenis_pensiun == 4) Janda @elseif($d->jenis_pensiun == 5) Meninggal Dunia @else Yatim @endif</td>
                                         <td>@if($d->status_berkas ==1 ) Proses BKD @elseif($d->status_berkas == 2) Proses BKD BTL @elseif($d->status_berkas == 3) Proses BKN @elseif($d->status_berkas == 4) Proses BKN BTL @elseif($d->status_berkas == 5 ) Masih Pertek @elseif($d->status_berkas == 6 ) Proses TTD Gurbernur @else SK Pensiun Sudah Jadi @endif</td>
                                         <td>{{$d->keterangan}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2) Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
                                         <td>
-                                            @if($d->status == 1)
-                                            <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
-                                            @else
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
-                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
-                                            @endif
+                                        <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2) Terverifikasi @else Tidak Diverifikasi @endif </td>
+                                        @if($d->status == 1)
+                                        <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
+                                        <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                        @else
+                                        <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                        <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                        @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -94,6 +95,7 @@
 </div>
 @include('admin.pensiun.create')
 @include('admin.pensiun.edit')
+@include('admin.pensiun.status')
 @endsection
 @section('script')
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
@@ -115,7 +117,6 @@
         let jenis_pensiun = button.data('jenis_pensiun')
         let status_berkas = button.data('status_berkas')
         let keterangan = button.data('keterangan')
-        let status = button.data('status')
         let modal = $(this)
 
         modal.find('.modal-body #id').val(id)
@@ -123,6 +124,17 @@
         modal.find('.modal-body #jenis_pensiun').val(jenis_pensiun);
         modal.find('.modal-body #status_berkas').val(status_berkas);
         modal.find('.modal-body #keterangan').val(keterangan);
+    })
+</script>
+
+<script>
+    $('#modalstatus').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id')
+        let status = button.data('status')
+        let modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
         modal.find('.modal-body #status').val(status);
     })
 </script>

@@ -7,7 +7,6 @@ use App\Mail\PendaftaranKTP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Ui\Presets\React;
 
 class KtpController extends Controller
 {
