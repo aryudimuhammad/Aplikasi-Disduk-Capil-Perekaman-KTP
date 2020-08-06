@@ -20,6 +20,7 @@
                         </select>
                         @else
                         <input type="text" readonly class="form-control" value="{{auth()->user()->name}}">
+                        <input type="hidden" id="pegawai_id" name="pegawai_id" value="{{auth()->user()->pegawai->id}}">
                         @endif
                     </div>
                     <div class="form-group">

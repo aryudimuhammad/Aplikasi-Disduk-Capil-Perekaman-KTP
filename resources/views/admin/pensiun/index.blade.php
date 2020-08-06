@@ -21,11 +21,13 @@
                         <i class="fa fa-table"></i> Data Pengusulan Pensiun
                         <div class="btn-group float-sm-right">
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah"> <i class="fa fa-plus"> </i> Tambah Data</button> &emsp13;
+                            @if(auth()->user()->role == 1)
                             <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
                             <div class="dropdown-menu">
                                 <a href="javaScript:void();" class="dropdown-item">Keseluruhan</a>
                                 <a href="javaScript:void();" class="dropdown-item">Cetak Berdasarkan</a>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body">
@@ -70,15 +72,14 @@
                                         <td>@if($d->jenis_pensiun == 1 ) Batas Usia Pensiun @elseif($d->jenis_pensiun == 2) Atas Permintaan Sendiri @elseif($d->jenis_pensiun == 3 ) Duda @elseif($d->jenis_pensiun == 4) Janda @elseif($d->jenis_pensiun == 5) Meninggal Dunia @else Yatim @endif</td>
                                         <td>@if($d->status_berkas ==1 ) Proses BKD @elseif($d->status_berkas == 2) Proses BKD BTL @elseif($d->status_berkas == 3) Proses BKN @elseif($d->status_berkas == 4) Proses BKN BTL @elseif($d->status_berkas == 5 ) Masih Pertek @elseif($d->status_berkas == 6 ) Proses TTD Gurbernur @else SK Pensiun Sudah Jadi @endif</td>
                                         <td>{{$d->keterangan}}</td>
-                                        <td>
                                         <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2) Terverifikasi @else Tidak Diverifikasi @endif </td>
-                                        @if($d->status == 1)
-                                        <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
-                                        <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
-                                        @else
-                                        <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
-                                        <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
-                                        @endif
+                                        <td>
+                                            @if($d->status == 2)
+                                            <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-check-square"> </i> Terverifikasi</button>
+                                            @else
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-pegawai_id="{{$d->pegawai_id}}" data-jenis_pensiun="{{$d->jenis_pensiun}}" data-status_berkas="{{$d->status_berkas}}" data-keterangan="{{$d->keterangan}}" data-status="{{$d->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
