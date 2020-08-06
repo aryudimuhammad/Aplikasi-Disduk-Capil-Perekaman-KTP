@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             'uuid' => Str::random(36),
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'foto' => 'default.png',
             'password' => Hash::make('123'),
         ]);
 

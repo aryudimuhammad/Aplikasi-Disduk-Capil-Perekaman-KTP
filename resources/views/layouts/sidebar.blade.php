@@ -2,7 +2,7 @@
     <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
         <div class="brand-logo">
             <a href="index.html">
-                <img src="images/logo.gif" width="10px;" height="40px;" class="logo-icon" alt="logo icon">
+                <img src="{{url('images/logo.gif')}}" width="10px;" height="40px;" class="logo-icon" alt="logo icon">
                 <h5 class="logo-text">Disdukcapil</h5>
             </a>
         </div>
@@ -11,7 +11,7 @@
                 @if(auth()->user()->foto == null)
                 <div class="avatar"><img class="mr-3 side-user-img" src="{{url('foto/default.png')}}" class="img-circle"></div>
                 @else
-                <div class="avatar"><img class="mr-3 side-user-img" src="foto/{{ Auth::user()->foto }}" class="img-circle"></div>
+                <div class="avatar"><img class="mr-3 side-user-img" src="{{ url('foto/'.Auth::user()->foto.'')}}" class="img-circle"></div>
                 @endif
                 <div class="media-body">
                     <h6 class="side-user-name">{{Auth::user()->name}}</h6>
@@ -33,20 +33,23 @@
             <li>
                 <a href="{{route('home')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-view-list-alt"></i> <span> Dashboard </span></a>
             </li>
-            <li class="sidebar-master">Data Master</li>
+            <li class="sidebar-header">Data Master</li>
             @if(auth()->user()->role == '1')
             <li>
                 <a href="{{route('pegawaiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-accounts-list"></i> <span> Data Pegawai </span></a>
+            </li>
+            <li>
+                <a href="{{route('ktpIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-account-box"></i> <span> Data Pendaftaran KTP </span></a>
             </li>
             @endif
             <li>
                 <a href="{{route('pensiunIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-calendar-close"></i> <span> Pengusulan Pensiun </span></a>
             </li>
             <li>
-                <a href="{{route('cutiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-calendar-note"></i> <span> Pengusulan Cuti </span></a>
+                <a href="{{route('cutiIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-calendar-note"></i><span> Pengusulan Cuti </span></a>
             </li>
             <li>
-                <a href="{{route('perpanjangIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-time-restore-setting"></i> <span> Perpanjang Masa Cuti </span></a>
+                <a href="{{route('perpanjangIndex')}}" style="font-size: 2px;" class="waves-effect"><i class="zmdi zmdi-time-restore-setting"></i><span> Perpanjang Masa Cuti </span></a>
             </li>
             @if(auth()->user()->role == '1')
             <li class="">
@@ -63,7 +66,7 @@
                 </ul>
             </li>
             @endif
-            <li class="sidebar-setting">Setting</li>
+            <li class="sidebar-header">Setting</li>
             <li><a href="{{ route('userIndex') }}"><i class="zmdi zmdi-settings"> </i> Setting</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="zmdi zmdi-power-setting"></i> Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

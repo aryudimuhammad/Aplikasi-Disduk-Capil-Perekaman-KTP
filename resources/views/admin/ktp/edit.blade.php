@@ -7,10 +7,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
+                {{ method_field('put') }}
+                @csrf
                 <div class="modal-body">
-                    {{ method_field('put') }}
-                    @csrf
                     <input type="hidden" id="id" name="id">
                     <div class="col-md-12">
                         <div class="form-group row">
@@ -24,25 +24,25 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="nama">Nama Lengkap</label>
-                                <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Masukkan Nama Lengkap">
+                                <input type="text" class="form-control form-control-user" value="{{old('nama')}}" id="nama" name="nama" placeholder="Masukkan Nama Lengkap">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="kk">No. KK</label>
-                                <input type="number" class="form-control form-control-user" id="kk" name="kk" placeholder="Masukkan Nomor Kartu Keluarga" maxlength="16">
+                                <input type="number" class="form-control form-control-user" value="{{old('kk')}}" id="kk" name="kk" placeholder="Masukkan Nomor Kartu Keluarga" maxlength="16">
                             </div>
                             <div class="col-sm-6">
                                 <label for="nik">NIK</label>
-                                <input type="number" class="form-control form-control-user" id="nik" name="nik" placeholder="Masukkan Nomor NIK" maxlength="16">
+                                <input type="number" class="form-control form-control-user" value="{{old('nik')}}" id="nik" name="nik" placeholder="Masukkan Nomor NIK" maxlength="16">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="email">Email</label>
-                                <input type="email" placeholder="Masukkan Email" class="form-control form-control-user" id="email" name="email">
+                                <input type="email" placeholder="Masukkan Email" value="{{old('email')}}" class="form-control form-control-user" id="email" name="email">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="jk">Jenis Kelamin</label>
@@ -56,11 +56,11 @@
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="tempat_lahir">Tempat Lahir</label>
-                                <input type="text" class="form-control form-control-user" id="tempat_lahir" name="tempat_lahir" placeholder="Kota Anda Lahir">
+                                <input type="text" class="form-control form-control-user" value="{{old('tempat_lahir')}}" id="tempat_lahir" name="tempat_lahir" placeholder="Kota Anda Lahir">
                             </div>
                             <div class="col-sm-6">
                                 <label for="tgl_lahir">Tgl Lahir</label>
-                                <input type="date" class="form-control form-control-user" id="tgl_lahir" name="tgl_lahir">
+                                <input type="date" class="form-control form-control-user" value="{{old('tgl_lahir')}}" id="tgl_lahir" name="tgl_lahir">
                             </div>
                         </div>
 
@@ -88,15 +88,15 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="alamat">Alamat</label>
-                                <textarea name="alamat" class="form-control" placeholder="Alamat Rumah"></textarea>
+                                <textarea name="alamat" class="form-control" id="alamat" placeholder="Alamat Rumah">{{old('alamat')}}</textarea>
                             </div>
                             <div class="col-sm-3">
                                 <label for="rt">RT</label>
-                                <input type="number" class="form-control form-control-user" id="rt" name="rt" placeholder="RT">
+                                <input type="number" class="form-control form-control-user" value="{{old('rt')}}" id="rt" name="rt" placeholder="RT">
                             </div>
                             <div class="col-sm-3">
                                 <label for="rw">RW</label>
-                                <input type="number" class="form-control form-control-user" id="rw" name="rw" placeholder="RW">
+                                <input type="number" class="form-control form-control-user" id="rw" value="{{old('rw')}}" name="rw" placeholder="RW">
                             </div>
                         </div>
                     </div>
@@ -104,11 +104,11 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="pekerjaan">Pekerjaan</label>
-                                <input type="text" class="form-control form-control-user" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan">
+                                <input type="text" class="form-control form-control-user" value="{{old('pekerjaan')}}" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan">
                             </div>
                             <div class="col-sm-6">
                                 <label for="kewarganegaraan">Kewarganegaraan</label>
-                                <input type="text" class="form-control form-control-user" id="kewarganegaraan" name="kewarganegaraan" placeholder="WNI">
+                                <input type="text" class="form-control form-control-user" value="{{old('kewarganegaraan')}}" id="kewarganegaraan" name="kewarganegaraan" placeholder="WNI">
                             </div>
                         </div>
 
@@ -139,7 +139,7 @@
                 </div>
                 <div class="modal-footer col-md-12">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
                 </div>
             </form>
         </div>

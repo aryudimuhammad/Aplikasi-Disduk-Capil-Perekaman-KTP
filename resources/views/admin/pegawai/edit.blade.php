@@ -7,8 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form method="POST">
+            <form method="POST">
+                <div class="modal-body">
                     {{ method_field('put') }}
                     @csrf
                     <input type="hidden" id="id" name="id">
@@ -103,6 +103,10 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="kependudukan">Kependudukan</label>
+                        <input type="text" class="form-control" id="kependudukan" name="kependudukan" placeholder="Kependudukan" value="{{old('kependudukan')}}">
+                    </div>
+                    <div class="form-group">
                         <label for="alamat">Alamat</label>
                         <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">{{old('alamat')}}</textarea>
                     </div>
@@ -122,12 +126,12 @@
                         <label for="tempat_lahir">Tempat lahir</label>
                         <textarea class="form-control" id="tempat_lahir" name="tempat_lahir" rows="3" placeholder="Masukkan Tempat lahir">{{old('tempat_lahir')}}</textarea>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
-                <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-check-square-o"></i> Ubah</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

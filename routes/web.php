@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::get('/admin/ktp', 'KtpController@index')->name('ktpIndex');
     Route::post('/admin/ktp', 'KtpController@store')->name('ktpstore');
     Route::put('/admin/ktp', 'KtpController@update')->name('ktpUpdate');
+    Route::patch('/admin/ktp', 'KtpController@status')->name('ktpStatus');
     Route::delete('/admin/ktp/delete/{id}', 'KtpController@delete')->name('ktpDelete');
     Route::get('/admin/ktp/{id}', 'KtpController@show')->name('ktpShow');
 });

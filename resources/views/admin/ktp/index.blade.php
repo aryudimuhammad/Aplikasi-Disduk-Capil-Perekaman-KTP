@@ -94,11 +94,11 @@
                                         <td>{{$d->email}}</td>
                                         <td>{{$d->kk}}</td>
                                         <td>{{$d->nik}}</td>
-                                        <td>@if($d->status == 1) Terverifikasi @elseif($d->status == 2) Tidak Diverifikasi @else Belum Diverifikasi @endif </td>
+                                        <td>@if($d->status_ktp == 1) <button class="btn btn-outline-warning btn-sm" data-id="{{$d->uuid}}" data-status="{{$d->status_ktp}}" data-keterangan="{{$d->keterangan}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-bell-o"></i> Belum Diverifikasi</button> @elseif($d->status_ktp == 2) <button class="btn btn-outline-primary btn-sm" data-id="{{$d->uuid}}" data-status="{{$d->status_ktp}}" data-keterangan="{{$d->keterangan}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-check-circle-o"></i> Terverifikasi</button> @elseif($d->status_ktp == 3) <button class="btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}" data-status="{{$d->status_ktp}}" data-keterangan="{{$d->keterangan}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-window-close-o"></i> Tidak Diverifikasi</button> @else <button class="btn btn-outline-success btn-sm" data-id="{{$d->uuid}}" data-status="{{$d->status}}" data-keterangan="{{$d->keterangan}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-check-square-o"></i> Selesai </button> @endif </td>
                                         <td>@if($d->keterangan == null) - @else {{$d->keterangan}} @endif </td>
                                         <td>
                                             <a class="btn btn-outline-info btn-sm" href="{{route('ktpShow',['id' => $d->uuid])}}"> <i class="fa fa-search"> </i> Detail</a>
-                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->id}}" data-permohonan="{{$d->permohonan}}" data-nama="{{$d->nama}}" data-kk="{{$d->kk}}" data-nik="{{$d->nik}}" data-jk="{{$d->jk}}" data-agama="{{$d->agama}}" data-tempat_lahir="{{$d->tempat_lahir}}" data-tgl_lahir="{{$d->tgl_lahir}}" data-status="{{$d->status}}" data-alamat="{{$d->alamat}}" data-rt="{{$d->rt}}" data-rw="{{$d->rw}}" data-kewarganegaraan="{{$d->kewarganegaraan}}" data-goldar="{{$d->goldar}}" data-pekerjaan="{{$d->pekerjaan}}" data-pict="{{$d->foto}}" data-email="{{$d->email}}" data-keterangan="{{$d->keterangan}}" data-status_ktp="{{$d->status_ktp}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit"> </i> Edit</button>
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->uuid}}" data-permohonan="{{$d->permohonan}}" data-nama="{{$d->nama}}" data-kk="{{$d->kk}}" data-nik="{{$d->nik}}" data-jk="{{$d->jk}}" data-agama="{{$d->agama}}" data-tempat_lahir="{{$d->tempat_lahir}}" data-tgl_lahir="{{$d->tgl_lahir}}" data-status="{{$d->status}}" data-alamat="{{$d->alamat}}" data-rt="{{$d->rt}}" data-rw="{{$d->rw}}" data-kewarganegaraan="{{$d->kewarganegaraan}}" data-goldar="{{$d->goldar}}" data-pekerjaan="{{$d->pekerjaan}}" data-pict="{{$d->foto}}" data-email="{{$d->email}}" data-keterangan="{{$d->keterangan}}" data-status_ktp="{{$d->status_ktp}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit"> </i> Edit</button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$d->uuid}}"> <i class="fa fa-trash"> </i> Hapus</button>
                                         </td>
                                     </tr>
@@ -115,6 +115,7 @@
 </div>
 @include('admin.ktp.create')
 @include('admin.ktp.edit')
+@include('admin.ktp.status')
 @endsection
 @section('script')
 <script src="{{url('template/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
@@ -173,6 +174,20 @@
         modal.find('.modal-body #email').val(email);
         modal.find('.modal-body #keterangan').val(keterangan);
         modal.find('.modal-body #status_ktp').val(status_ktp);
+    })
+</script>
+
+<script>
+    $('#modalstatus').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id')
+        let status = button.data('status')
+        let keterangan = button.data('keterangan')
+        let modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #status').val(status);
+        modal.find('.modal-body #keterangan').val(keterangan);
     })
 </script>
 

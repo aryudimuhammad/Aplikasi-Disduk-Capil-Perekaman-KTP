@@ -31,6 +31,8 @@ class PendaftaranKTP extends Mailable
         return $this->markdown('Mails.Pendaftaranktp')->with([
             'nama' => $this->ktp->nama,
             'permohonan' => $this->ktp->permohonan,
+            'status' => $this->ktp->status_ktp,
+            'keterangan' => $this->ktp->keterangan,
         ]);
     }
 }

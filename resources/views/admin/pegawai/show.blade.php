@@ -32,7 +32,11 @@
                                         <img class="img-fluid" src="{{url('images/3.jpg')}}" alt="Card image cap">
                                     </div>
                                     <div class="card-body pt-5">
-                                        <img @if($data->user->foto == null) src="{{url('foto/default.png')}}" @else src="foto/{{$data->user->foto}}" @endif class="profile">
+                                        @if($data->user->foto == null)
+                                        <img src="{{url('foto/default.png')}}" class="profile">
+                                        @else
+                                        <img src="{{url('foto/'.$data->user->foto.'')}}" class="profile">
+                                        @endif
                                         <h5 class="card-title">{{$data->user->name}}</h5>
                                         <p class="card-text">NIP : {{$data->nip}}</p>
                                         <p class="card-text">Email : {{$data->user->email}}</p>

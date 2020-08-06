@@ -101,12 +101,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">{{old('alamat')}}</textarea>
-                    </div>
-                    <div class="form-group">
                         <label for="kependudukan">Kependudukan</label>
                         <input type="text" class="form-control" id="kependudukan" name="kependudukan" placeholder="Kependudukan" value="{{old('kependudukan')}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">{{old('alamat')}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="kodepos">Kode Pos</label>
