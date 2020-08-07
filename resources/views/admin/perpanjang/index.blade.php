@@ -20,11 +20,13 @@
                     <div class="card-header">
                         <i class="fa fa-table"></i> Data Masa Cuti Aktif
                         <div class="btn-group float-sm-right">
-                            <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
+                            @if(Auth()->user()->role == 1)
+                            <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
                             <div class="dropdown-menu">
-                                <a href="javaScript:void();" class="dropdown-item">Keseluruhan</a>
-                                <a href="javaScript:void();" class="dropdown-item">Cetak Berdasarkan</a>
+                                <a href="{{route('perpanjangCetak')}}" target="_blank" class="dropdown-item">Keseluruhan</a>
+                                <button data-toggle="modal" data-target="#modalcetaktgl" class="dropdown-item">Cetak Berdasarkan Tanggal Mulai Cuti</button>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="card-body">
@@ -76,6 +78,7 @@
             </div>
             <!-- End container-fluid-->
         </div>
+        @include('admin.perpanjang.cetaktgl')
         @endsection
         @section('script')
         <script src="{{url('template/assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>

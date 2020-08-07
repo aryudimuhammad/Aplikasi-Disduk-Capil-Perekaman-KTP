@@ -24,8 +24,8 @@
                             @if(auth()->user()->role == 1)
                             <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
                             <div class="dropdown-menu">
-                                <a href="javaScript:void();" class="dropdown-item">Keseluruhan</a>
-                                <a href="javaScript:void();" class="dropdown-item">Cetak Berdasarkan</a>
+                                <a href="{{route('cutiCetak')}}" target="_blank" class="dropdown-item">Keseluruhan</a>
+                                <button class="dropdown-item" data-toggle="modal" data-target="#modalcetaktgl">Cetak Berdasarkan Tanggal Mulai Cuti</button>
                             </div>
                             @endif
                         </div>
@@ -94,6 +94,7 @@
     </div>
     <!-- End container-fluid-->
 </div>
+@include('admin.cuti.cetaktgl')
 @include('admin.cuti.create')
 @include('admin.cuti.edit')
 @include('admin.cuti.status')

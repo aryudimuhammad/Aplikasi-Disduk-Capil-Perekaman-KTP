@@ -23,8 +23,8 @@
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaltambah"> <i class="fa fa-plus"> </i> Tambah Data</button> &emsp13;
                             <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
                             <div class="dropdown-menu">
-                                <a href="javaScript:void();" class="dropdown-item">Keseluruhan</a>
-                                <a href="javaScript:void();" class="dropdown-item">Cetak Berdasarkan</a>
+                                <a href="{{route('unitCetak')}}" target="_blank" class="dropdown-item">Keseluruhan</a>
+                                <!-- <a href="javaScript:void();" class="dropdown-item">Cetak Berdasarkan</a> -->
                             </div>
                         </div>
                     </div>

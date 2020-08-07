@@ -88,4 +88,21 @@ Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::patch('/admin/ktp', 'KtpController@status')->name('ktpStatus');
     Route::delete('/admin/ktp/delete/{id}', 'KtpController@delete')->name('ktpDelete');
     Route::get('/admin/ktp/{id}', 'KtpController@show')->name('ktpShow');
+
+    //Cetak Laporan
+    Route::get('/cetak/pegawai', 'CetakController@pegawai')->name('pegawaiCetak');
+    Route::get('/cetak/pegawaitgl', 'CetakController@pegawaitgl')->name('pegawaitglCetak');
+    Route::get('/cetak/ktp', 'CetakController@ktp')->name('ktpCetak');
+    Route::get('/cetak/ktptgl', 'CetakController@ktptgl')->name('ktptglCetak');
+    Route::get('/cetak/pensiun', 'CetakController@pensiun')->name('pensiunCetak');
+    Route::get('/cetak/pensiuntgl', 'CetakController@pensiuntgl')->name('pensiuntglCetak');
+    Route::get('/cetak/cuti', 'CetakController@cuti')->name('cutiCetak');
+    Route::get('/cetak/cutitgl', 'CetakController@cutitgl')->name('cutitglCetak');
+    Route::get('/cetak/perpanjang/cuti', 'CetakController@perpanjang')->name('perpanjangCetak');
+    Route::get('/cetak/perpanjangtgl/cuti', 'CetakController@perpanjangtgl')->name('perpanjangtglCetak');
+    Route::get('/cetak/instansi', 'CetakController@instansi')->name('instansiCetak');
+    Route::get('/cetak/unit', 'CetakController@unit')->name('unitCetak');
+    Route::get('/cetak/satuan', 'CetakController@satuan')->name('satuanCetak');
+    Route::get('/cetak/golongan', 'CetakController@golongan')->name('golonganCetak');
+    Route::get('/cetak/jabatan', 'CetakController@jabatan')->name('jabatanCetak');
 });
