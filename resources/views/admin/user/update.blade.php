@@ -84,25 +84,25 @@
     <div class="form-group row">
         <label class="col-lg-3 col-form-label form-control-label">Kependudukan</label>
         <div class="col-lg-9">
-            <input class="form-control" type="text" value="{{Auth()->user()->pegawai->kependudukan}}" placeholder="Kependudukan">
+            <input class="form-control" type="text" name="kependudukan" value="{{Auth()->user()->pegawai->kependudukan}}" placeholder="Kependudukan">
         </div>
     </div>
     <div class="form-group row">
         <label class="col-lg-3 col-form-label form-control-label">Nomor Telepon</label>
         <div class="col-lg-9">
-            <input class="form-control" type="text" value="{{Auth()->user()->pegawai->telp}}" placeholder="Nomor Telepon">
+            <input class="form-control" type="text" name="telp" value="{{Auth()->user()->pegawai->telp}}" placeholder="Nomor Telepon">
         </div>
     </div>
     <div class="form-group row">
         <label class="col-lg-3 col-form-label form-control-label">Alamat</label>
         <div class="col-lg-9">
-            <textarea class="form-control" placeholder="Nomor Telepon">{{Auth()->user()->pegawai->alamat}}</textarea>
+            <textarea class="form-control" name="alamat" placeholder="Nomor Telepon">{{Auth()->user()->pegawai->alamat}}</textarea>
         </div>
     </div>
     <div class="form-group row">
         <label class="col-lg-3 col-form-label form-control-label">Kodepos</label>
         <div class="col-lg-9">
-            <input class="form-control" type="text" value="{{Auth()->user()->pegawai->kodepos}}" placeholder="Kependudukan">
+            <input class="form-control" type="text" name="kodepos" value="{{Auth()->user()->pegawai->kodepos}}" placeholder="Kependudukan">
         </div>
     </div>
     @endif

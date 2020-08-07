@@ -50,14 +50,7 @@ class HomeController extends Controller
                 'required' => ':attribute harus diisi.',
             ];
             $validator = Validator::make($request->all(), [
-                'nip' => 'required',
                 'nama' => 'required',
-                'instansi' => 'required',
-                'unit' => 'required',
-                'satuan' => 'required',
-                'golongan' => 'required',
-                'jabatan' => 'required',
-                'tgl_masuk' => 'required',
                 'tempat_lahir' => 'required',
                 'tgl_lahir' => 'required',
                 'jk' => 'required',
@@ -93,39 +86,30 @@ class HomeController extends Controller
         $user = User::find(Auth()->user()->id);
         $user->name = $request->nama;
         $user->email = $request->email;
-        if ($request->foto) {
-            $request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());
-            $user->foto = $request->file('foto')->getClientOriginalName();
-        } else {
-            $user->foto = $user->foto;
-        }
-        $user->update();
-
-        if ($request->password_lama && $request->password_baru) {
+        if ($request->password_baru) {
             $messages = [
-                'required' => ':attribute harus di isi.',
-                'min' => ':attribute minimal harus 3 karakter.',
+                'required' => 'Konfirmasi Password Harus Diisi.',
+                'min' => 'Passowrd Minimal Harus 3 Karakter.',
                 'same' => 'Konfirmasi Password Salah.',
             ];
             $validator = Validator::make($request->all(), [
-                'password_lama' => ['required'],
-                'konfirmasi_password' => ['required'],
-                'password_baru' => ['same:konfirmasi_password', 'min:3'],
+                'konfirmasi_password' => 'required',
+                'password_baru' => 'same:konfirmasi_password|min:3',
             ], $messages);
 
             if ($validator->fails()) {
                 return back()->with('warning', $validator->errors()->all()[0])->withInput();
             }
 
-            if (Hash::check($request->password_lama, $user->password)) {
-                $user->password = Hash::make($request->password_baru);
-            } else {
-                return back()->with('warning', 'Password yang Anda Masukkan Salah');
-            }
-        } elseif (!$request->password_lama && !$request->password_baru && !$request->konfirmasi_password) {
-            $user->password = Hash::make($user->password);
+            $user->password = Hash::make($request->password_baru);
         } else {
-            return back()->with('warning', 'Password Harus Diisi.');
+            $user->password = $user->password;
+        }
+        if ($request->foto) {
+            $request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());
+            $user->foto = $request->file('foto')->getClientOriginalName();
+        } else {
+            $user->foto = $user->foto;
         }
         $user->update();
 

@@ -243,7 +243,7 @@
                                                                     @foreach($data as $d)
                                                                     <tr>
                                                                         <td>
-                                                                            <a>Jenis Cuti</a> @if($d->jenis_cuti == 1) Tahunan @elseif($d->jenis_cuti == 2 ) Nikah @elseif($d->jenis_cuti == 3) Sakit @elseif($d->jenis_cuti == 4) Bersalin @else Karena Alasan Penting @endif <strong style="float:right;"> {{$d->created_at}} </strong>
+                                                                            <a>{{Carbon\Carbon::parse($d->mulai_cuti)->translatedformat('d M Y ')}} s/d {{Carbon\Carbon::parse($d->akhir_cuti)->translatedformat('d M Y ')}}</a> <a>Jenis Cuti</a> @if($d->jenis_cuti == 1) Tahunan @elseif($d->jenis_cuti == 2 ) Nikah @elseif($d->jenis_cuti == 3) Sakit @elseif($d->jenis_cuti == 4) Bersalin @else Karena Alasan Penting @endif <strong style="float:right;"> {{$d->created_at}} </strong>
                                                                         </td>
                                                                     </tr>
                                                                     @endforeach
