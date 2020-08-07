@@ -75,9 +75,10 @@ class PerpanjangController extends Controller
         $cuti->update();
         if (auth()->user()->role == 1) {
             Mail::to($cuti->pegawai->user->email)->send(new VerifikasiPerpanjangCuti($data));
+            return back()->with('success', 'Terkirim, Data Berhasil Disimpan.');
+        } else {
+            return back()->with('success', 'Data Berhasil Disimpan.');
         }
-
-        return back()->with('success', 'Terkirim, Data Berhasil Disimpan.');
     }
 
     public function update(Request $request)

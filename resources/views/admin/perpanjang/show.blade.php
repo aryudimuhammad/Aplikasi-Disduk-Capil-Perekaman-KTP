@@ -90,9 +90,21 @@
                                         <td>{{$d->perpanjang->keterangan}}</td>
                                         <td>@if($d->perpanjang->status == 1) Belum Diverifikasi @elseif($d->perpanjang->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                                         <td>
+                                            @if(Auth()->user()->role == 1)
                                             <button class="btn btn-outline-info btn-sm" data-id="{{$d->perpanjang->uuid}}" data-status="{{$d->perpanjang->status}}" data-toggle="modal" data-target="#modalstatus"> <i class="fa fa-edit">Ubah Status</i> </button>
                                             <button class="btn btn-outline-warning btn-sm" data-id="{{$d->perpanjang_id}}" data-cuti_id="{{$d->pegawai->user->name}}" data-mulai="{{$d->perpanjang->mulai}}" data-akhir="{{$d->perpanjang->akhir}}" data-pict="{{$d->perpanjang->bukti}}" data-keterangan="{{$d->perpanjang->keterangan}}" data-status="{{$d->perpanjang->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
                                             <button class="delete btn btn-outline-danger btn-sm" data-id="{{$cuti->uuid}}" data-uuid="{{$d->perpanjang->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                            @else
+                                            @if($d->perpanjang->status == 1)
+                                            <button class="btn btn-outline-warning btn-sm" data-id="{{$d->perpanjang_id}}" data-cuti_id="{{$d->pegawai->user->name}}" data-mulai="{{$d->perpanjang->mulai}}" data-akhir="{{$d->perpanjang->akhir}}" data-pict="{{$d->perpanjang->bukti}}" data-keterangan="{{$d->perpanjang->keterangan}}" data-status="{{$d->perpanjang->status}}" data-toggle="modal" data-target="#modaledit"> <i class="fa fa-edit">Edit</i> </button>
+                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$cuti->uuid}}" data-uuid="{{$d->perpanjang->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                            @elseif($d->perpanjang->status == 2)
+                                            <button class="btn btn-outline-success btn-sm"> <i class="fa fa-check-square"> Telah Diverifikasi</i> </button>
+                                            @else
+                                            <button class="btn btn-outline-danger btn-sm"> <i class="fa fa-window-close"> Tidak Diverifikasi</i> </button>
+                                            <button class="delete btn btn-outline-danger btn-sm" data-id="{{$cuti->uuid}}" data-uuid="{{$d->perpanjang->uuid}}"> <i class="fa fa-trash">Hapus</i> </button>
+                                            @endif
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
