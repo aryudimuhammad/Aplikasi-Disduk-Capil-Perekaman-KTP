@@ -21,9 +21,19 @@ function totalktp()
     return Ktp::count();
 }
 
+function totalktpnotif()
+{
+    return Ktp::where('status', 1)->count();
+}
+
 function totalpensiun()
 {
     return Pensiun::count();
+}
+
+function totalpensiunnotif()
+{
+    return Pensiun::where('status', 1)->count();
 }
 
 function totalcuti()
@@ -31,9 +41,19 @@ function totalcuti()
     return Cuti::count();
 }
 
+function totalcutinotif()
+{
+    return Cuti::where('status', 1)->count();
+}
+
 function totalperpanjang()
 {
     return Perpanjang::count();
+}
+
+function totalperpanjangnotif()
+{
+    return Perpanjang::where('status', 1)->count();
 }
 
 function totalinstansi()
