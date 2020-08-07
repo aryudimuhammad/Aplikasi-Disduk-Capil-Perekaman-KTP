@@ -15,19 +15,19 @@ class PerpanjangSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
-        $mulai = now()->addDays(5);
-        $akhir = now()->addDays(10);
+        // $faker = Faker::create('id_ID');
+        // $mulai = now()->addDays(5);
+        // $akhir = now()->addDays(10);
 
-        for ($i = 1; $i <= 5; $i++) {
-            Perpanjang::insert([
-                'uuid' => Str::random(36),
-                'mulai' => $faker->date($mulai),
-                'akhir' => $faker->date($akhir),
-                'bukti' => 'default.png',
-                'keterangan' => $faker->text(200),
-                'status' => $faker->numberBetween(1, 2),
-            ]);
-        }
+        // for ($i = 1; $i <= 5; $i++) {
+        //     Perpanjang::insert([
+        //         'uuid' => Str::random(36),
+        //         'mulai' => $faker->date($mulai),
+        //         'akhir' => $faker->date($akhir),
+        //         'bukti' => 'default.png',
+        //         'keterangan' => $faker->text(200),
+        //         'status' => $faker->numberBetween(1, 2),
+        //     ]);
+        // }
     }
 }

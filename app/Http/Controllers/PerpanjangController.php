@@ -3,29 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Cuti;
-use App\Pegawai;
 use App\Perpanjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerifikasiPerpanjangCuti;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class PerpanjangController extends Controller
 {
     public function index()
     {
-        $auth = Pegawai::where('user_id',  Auth()->user()->id)->first();
-        $cutipegawai = Cuti::where('pegawai_id', $auth->id)->where('jenis_cuti', '>', 2)->where('jenis_cuti', '<', 5)->first();
-        $data = Perpanjang::latest()->get();
+        if (auth()->user()->role == 1) {
+            $now = Carbon::now()->format('Y-m-d');
+            $data = Cuti::where('jenis_cuti', '>', 2)->where('jenis_cuti', '<', 5)->where('akhir_cuti', '>=', $now)->where('status', 2)->get();
 
-        if (auth()->user()->role == 2) {
-            $cuti = Cuti::where('pegawai_id', $auth->id)->where('jenis_cuti', '>', 2)->where('jenis_cuti', '<', 5)->get();
-            $datarole2 = Cuti::where('pegawai_id',  $auth->id)->where('perpanjang_id', !null)->get();
-            return view('admin.perpanjang.index', compact('data', 'cuti', 'datarole2', 'cutipegawai'));
+            return view('admin.perpanjang.index', compact('data'));
         } else {
-            $cuti = Cuti::where('jenis_cuti', '>', 2)->where('jenis_cuti', '<', 5)->get();
-            return view('admin.perpanjang.index', compact('data', 'cuti'));
+            $now = Carbon::now()->format('Y-m-d');
+            $data = Cuti::where('pegawai_id', Auth()->user()->pegawai->id)->where('jenis_cuti', '>', 2)->where('jenis_cuti', '<', 5)->where('akhir_cuti', '>=', $now)->where('status', 2)->get();
+
+            return view('admin.perpanjang.index', compact('data'));
         }
+    }
+
+    public function show($id)
+    {
+        $cuti = Cuti::where('uuid', $id)->first();
+        $perpanjang = Perpanjang::where('id', $cuti->perpanjang_id)->first();
+        $data = Cuti::where('uuid', $id)->orderby('perpanjang_id', 'desc')->get();
+
+        return view('admin.perpanjang.show', compact('data', 'cuti', 'perpanjang'));
     }
 
     public function store(Request $request)
@@ -48,8 +56,9 @@ class PerpanjangController extends Controller
             return back()->with('warning', 'Tanggal Cuti Harus Benar!');
         }
 
+        $mulai = Carbon::parse($request->mulai)->addDays(1)->format('Y-m-d');
         $data = new Perpanjang;
-        $data->mulai = $request->mulai;
+        $data->mulai = $mulai;
         $data->akhir = $request->akhir;
         $data->keterangan = $request->keterangan;
         if ($request->bukti) {
@@ -58,9 +67,15 @@ class PerpanjangController extends Controller
         }
         if (auth()->user()->role == 1) {
             $data->status = '2';
-            Mail::to($data->cuti->pegawai->user->email)->send(new VerifikasiPerpanjangCuti($data));
         }
         $data->save();
+
+        $cuti = Cuti::find($request->cuti_id);
+        $cuti->perpanjang_id = $data->id;
+        $cuti->update();
+        if (auth()->user()->role == 1) {
+            Mail::to($cuti->pegawai->user->email)->send(new VerifikasiPerpanjangCuti($data));
+        }
 
         return back()->with('success', 'Terkirim, Data Berhasil Disimpan.');
     }
@@ -110,10 +125,14 @@ class PerpanjangController extends Controller
         return back()->with('success', 'Terkirim, Status Berhasil Diubah.');
     }
 
-    public function delete($id)
+    public function delete($id, $uuid)
     {
-        $data = Perpanjang::where('uuid', $id)->first();
+        $data = Perpanjang::where('uuid', $uuid)->first();
         $data->delete();
+
+        $cuti = Cuti::where('uuid', $id)->first();
+        $cuti->perpanjang_id = Null;
+        $cuti->update();
 
         return back();
     }

@@ -36,11 +36,13 @@ Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
     Route::put('/admin/cuti', 'CutiController@update')->name('cutiUpdate');
     Route::delete('/admin/cuti/delete/{id}', 'CutiController@delete')->name('cutiDelete');
 
-    Route::get('/admin/perpanjang/cuti', 'PerpanjangController@index')->name('perpanjangIndex');
-    Route::post('/admin/perpanjang/cuti', 'PerpanjangController@store')->name('perpanjangStore');
-    Route::put('/admin/perpanjang/cuti', 'PerpanjangController@update')->name('perpanjangUpdate');
-    Route::patch('/admin/perpanjang/cuti', 'PerpanjangController@status')->name('perpanjangStatus');
-    Route::delete('/admin/perpanjang/cuti/delete/{id}', 'PerpanjangController@delete')->name('perpanjangDelete');
+    //perpanjang cuti
+    Route::get('/admin/cuti/aktif', 'PerpanjangController@index')->name('perpanjangIndex');
+    Route::get('/admin/perpanjang/masa/cuti/{id}', 'PerpanjangController@show')->name('perpanjangShow');
+    Route::post('/admin/perpanjang/masa/cuti/{id}', 'PerpanjangController@store')->name('perpanjangStore');
+    Route::put('/admin/perpanjang/masa/cuti/{id}', 'PerpanjangController@update')->name('perpanjangUpdate');
+    Route::patch('/admin/perpanjang/masa/cuti/{id}', 'PerpanjangController@status')->name('perpanjangStatus');
+    Route::delete('/admin/perpanjang/masa/cuti/{id}/{uuid}', 'PerpanjangController@delete')->name('perpanjangDelete');
 
     //Dashboard dan Profile
     Route::get('/home', 'HomeController@index')->name('home');

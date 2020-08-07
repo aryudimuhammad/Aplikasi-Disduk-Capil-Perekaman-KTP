@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content animated fadeInUp">
             <div class="modal-header">
-                <h1 class="modal-title"><b>Edit Data Unit Kerja</b></h1>
+                <h1 class="modal-title"><b>Edit Data Perpanjang Masa Cuti</b></h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,23 +13,13 @@
                     @csrf
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
-                        @if(auth()->user()->role == 1)
-                        <label for="cuti_id">Pilih Pegawai</label>
-                        <select name="cuti_id" id="cuti_id" class="form-control">
-                            @foreach($cuti as $d)
-                            <option value="{{$d->id}}" @if (old('cuti_id')==$d->cuti_id ) {{'selected'}} @endif> {{$d->pegawai->user->name}} @if($d->jenis_cuti == 3) Sakit @else Bersalin @endif</option>
-                            @endforeach
-                        </select>
-                        @else
-                        <input type="text" readonly class="form-control" value="{{auth()->user()->name}}">
-                        <input type="hidden" value="{{auth()->user()->pegawai->id}}" name="pegawai_id" id="pegawai_id">
-                        @endif
+                        <input type="text" readonly class="form-control" name="cuti_id" id="cuti_id">
                     </div>
                     <div class="form-group">
                         <label for="mulai">Tambah Masa Cuti</label>
                         <div id="dateragne-picker">
                             <div class="input-daterange input-group">
-                                <input type="date" class="form-control" name="mulai" id="mulai">
+                                <input type="date" class="form-control" readonly name="mulai" id="mulai">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">to</span>
                                 </div>

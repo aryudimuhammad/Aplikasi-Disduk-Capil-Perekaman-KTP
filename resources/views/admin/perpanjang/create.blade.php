@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content animated fadeInUp">
             <div class="modal-header">
-                <h1 class="modal-title"><b>Tambah Data Pengusulan Cuti</b></h1>
+                <h1 class="modal-title"><b>Perpanjang Masa Cuti</b></h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -10,19 +10,16 @@
             <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     @csrf
+                    <input type="hidden" name="cuti_id" id="cuti_id" value="{{$cuti->id}}">
                     <div class="form-group">
-                        <label for="cuti_id">Pilih Pegawai</label>
-                        <select name="cuti_id" id="cuti_id" class="form-control">
-                            @foreach($cuti as $d)
-                            <option value="{{$d->id}}" @if (old('cuti_id')==$d->cuti_id ) {{'selected'}} @endif> {{$d->pegawai->user->name}} @if($d->jenis_cuti == 3) Sakit @else Bersalin @endif</option>
-                            @endforeach
-                        </select>
+                        <label for="cuti_id">Nama Pegawai</label>
+                        <input type="text" readonly class="form-control" value="{{$cuti->pegawai->user->name}}">
                     </div>
                     <div class="form-group">
                         <label for="mulai">Tambah Masa Cuti</label>
                         <div id="dateragne-picker">
                             <div class="input-daterange input-group">
-                                <input type="date" class="form-control" name="mulai" id="mulai">
+                                <input type="date" readonly class="form-control" name="mulai" id="mulai">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">to</span>
                                 </div>
@@ -35,7 +32,7 @@
                         <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="bukti">Bukti</label>
+                        <label for="bukti">Bukti / Surat Keterangan Dokter</label>
                         <input type="file" name="bukti" id="bukti" class="form-control">
                     </div>
                     <div class="form-group">
