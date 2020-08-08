@@ -40,7 +40,7 @@
                                         <h5 class="card-title">{{$data->nama}}</h5>
                                         <p class="card-text">Permohonan : @if($data->permohonan == 1) Baru @elseif($data->permohonan == 2) Perpanjangan @elseif($data->permohonan == 3 ) Pergantian @else - @endif</p>
                                         <p class="card-text">Email : {{$data->email}}</p>
-                                        <p class="card-text">Status : @if($data->status == 1) <a class="text-warning">Belum Diverifikasi</a> @elseif($data->status == 2) <a class="text-primary">Tererifikasi</a> @elseif($data->status == 3) <a class="text-info">Tidak Diverifikasi</a> @else <a class="text-success">Selesai</a> @endif </p>
+                                        <p class="card-text">Status : @if($data->status_ktp == 1) <a class="text-warning">Belum Diverifikasi</a> @elseif($data->status_ktp == 2) <a class="text-primary">Tererifikasi</a> @elseif($data->status_ktp == 3) <a class="text-info">Tidak Diverifikasi</a> @else <a class="text-success">Selesai</a> @endif </p>
                                     </div>
                                 </div>
                             </div>

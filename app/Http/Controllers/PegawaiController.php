@@ -65,7 +65,7 @@ class PegawaiController extends Controller
         $user->role = '2';
         $user->password = Hash::make($request->nip);
         if ($request->foto) {
-            $request->file('foto')->move('images/profile/', $request->file('foto')->getClientOriginalName());
+            $request->file('foto')->move('images/foto/', $request->file('foto')->getClientOriginalName());
             $user->foto = $request->file('foto')->getClientOriginalName();
             $user->save();
         } else {
@@ -137,7 +137,7 @@ class PegawaiController extends Controller
         $user->role = '2';
         $user->password = Hash::make($request->nip);
         if ($request->foto) {
-            $request->file('foto')->move('images/profile/', $request->file('foto')->getClientOriginalName());
+            $request->file('foto')->move('images/foto/', $request->file('foto')->getClientOriginalName());
             $user->foto = $request->file('foto')->getClientOriginalName();
             $user->save();
         } else {

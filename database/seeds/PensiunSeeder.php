@@ -22,7 +22,7 @@ class PensiunSeeder extends Seeder
                 'pegawai_id' => $i,
                 'jenis_pensiun' => $faker->numberBetween(1, 6),
                 'status_berkas' => $faker->numberBetween(1, 7),
-                'keterangan' => $faker->text(200),
+                'keterangan' => $faker->text(50),
                 'status' => $faker->numberBetween(1, 2),
             ]);
         }

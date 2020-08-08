@@ -12,7 +12,7 @@ class KtpController extends Controller
 {
     public function index()
     {
-        $data = Ktp::latest()->get();
+        $data = Ktp::orderby('id', 'desc')->get();
 
         return view('admin.ktp.index', compact('data'));
     }

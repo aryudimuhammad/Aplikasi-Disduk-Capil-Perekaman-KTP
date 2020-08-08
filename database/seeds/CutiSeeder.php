@@ -25,7 +25,7 @@ class CutiSeeder extends Seeder
                 'jenis_cuti' => $faker->numberBetween(3, 4),
                 'mulai_cuti' => $faker->date($mulai),
                 'akhir_cuti' => $faker->date($akhir),
-                'keterangan' => $faker->text(200),
+                'keterangan' => $faker->text(50),
                 'status' => $faker->numberBetween(1, 2),
             ]);
         }
@@ -36,7 +36,7 @@ class CutiSeeder extends Seeder
                 'jenis_cuti' => $faker->numberBetween(1, 5),
                 'mulai_cuti' => $faker->date($mulai),
                 'akhir_cuti' => $faker->date($akhir),
-                'keterangan' => $faker->text(200),
+                'keterangan' => $faker->text(50),
                 'status' => $faker->numberBetween(1, 2),
             ]);
         }

@@ -16,7 +16,7 @@
                         <label for="status">Status</label>
                         <select name="status" id="status" class="form-control">
                             <option value="1">Pilih Status</option>
-                            <option value="2">Terverifikasi</option>
+                            <option value="2">Verifikasi</option>
                             <option value="3">Tidak Diverifikasi</option>
                             <option value="4">Selesai Dibuat</option>
                         </select>

@@ -124,11 +124,11 @@
                         <label for="tempat_lahir">Tempat lahir</label>
                         <textarea class="form-control" id="tempat_lahir" name="tempat_lahir" rows="3" placeholder="Masukkan Tempat lahir">{{old('tempat_lahir')}}</textarea>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="foto">Foto</label>
                         <input type="file" class="form-control" id="foto" name="foto" value="{{old('foto')}}">
                         <p>Note : Masukkan Foto Jika Ada Mempunyai Foto.</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"></i> Tutup</button>

@@ -15,9 +15,9 @@
                     <div class="form-group">
                         <label for="status">Pilih Status</label>
                         <select name="status" id="status" class="form-control">
-                            <option value="1" @if (old('status')==1 ){{'selected'}} @endif>Belum Dirifikasi</option>
-                            <option value="2" @if (old('status')==1 ){{'selected'}} @endif>Verifikasi</option>
-                            <option value="3" @if (old('status')==2 ){{'selected'}} @endif>Tidak Diverifikasi</option>
+                            <option value="1" @if (old('status')==1 ){{'selected'}} @endif>Belum Diverifikasi</option>
+                            <option value="2" @if (old('status')==2 ){{'selected'}} @endif>Verifikasi</option>
+                            <option value="3" @if (old('status')==3 ){{'selected'}} @endif>Tidak Diverifikasi</option>
                         </select>
                     </div>
                 </div>
