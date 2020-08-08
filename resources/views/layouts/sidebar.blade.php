@@ -58,11 +58,11 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="sidebar-submenu menu-open" style="display: none;">
-                    <li><a href="{{route('instansiIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Instansi Kerja</a></li>
+                    <li><a href="{{route('instansiIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Instansi</a></li>
                     <li><a href="{{route('unitIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Unit Kerja</a></li>
                     <li><a href="{{route('satuanIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Satuan Kerja</a></li>
-                    <li><a href="{{route('golonganIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Golongan Kerja</a></li>
-                    <li><a href="{{route('jabatanIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Jabatan Kerja</a></li>
+                    <li><a href="{{route('golonganIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Golongan</a></li>
+                    <li><a href="{{route('jabatanIndex')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Jabatan</a></li>
                 </ul>
             </li>
             @endif

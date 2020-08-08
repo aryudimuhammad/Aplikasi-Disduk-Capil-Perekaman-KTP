@@ -105,4 +105,5 @@ Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::get('/cetak/satuan', 'CetakController@satuan')->name('satuanCetak');
     Route::get('/cetak/golongan', 'CetakController@golongan')->name('golonganCetak');
     Route::get('/cetak/jabatan', 'CetakController@jabatan')->name('jabatanCetak');
+    Route::get('/cetak/jabatannama', 'CetakController@jabatannama')->name('jabatannamaCetak');
 });

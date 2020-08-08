@@ -24,7 +24,7 @@
                             <button type="button" class="btn btn-info waves-effect waves-info btn-sm float-right  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-haspopup="true" aria-expanded="true"><i class="fa fa-print mr-1"></i> Print</button>
                             <div class="dropdown-menu">
                                 <a href="{{route('jabatanCetak')}}" target="_blank" class="dropdown-item">Keseluruhan</a>
-                                <!-- <a href="javaScript:void();" class="dropdown-item">Cetak Berdasarkan</a> -->
+                                <button data-toggle="modal" data-target="#modalcetaknama" class="dropdown-item">Cetak Berdasarkan Nama Jabatan</button>
                             </div>
                         </div>
                     </div>
@@ -61,6 +61,7 @@
     </div>
     <!-- End container-fluid-->
 </div>
+@include('admin.jabatan.cetaknama')
 @include('admin.jabatan.create')
 @include('admin.jabatan.edit')
 @endsection

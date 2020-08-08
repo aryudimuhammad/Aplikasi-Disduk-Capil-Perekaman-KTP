@@ -136,4 +136,13 @@ class CetakController extends Controller
         $pdf = PDF::loadview('laporan/jabatan', compact('data'));
         return $pdf->stream('laporan-jabatan-pdf');
     }
+
+    public function jabatannama(Request $request)
+    {
+        $jabatan = Jabatan::where('id', $request->nama)->first();
+        $data = Pegawai::where('jabatan_id', $request->nama)->orderby('id', 'desc')->get();
+
+        $pdf = PDF::loadview('laporan/jabatannama', compact('data', 'jabatan'));
+        return $pdf->stream('laporan-jabatan-pdf');
+    }
 }
