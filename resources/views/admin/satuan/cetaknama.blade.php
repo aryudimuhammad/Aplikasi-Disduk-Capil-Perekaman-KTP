@@ -2,16 +2,16 @@
     <div class="modal-dialog">
         <div class="modal-content animated fadeInUp">
             <div class="modal-header">
-                <h1 class="modal-title"><b>Cetak Pegawai Berdasarkan Nama Jabatan</b></h1>
+                <h1 class="modal-title"><b>Cetak Pegawai Berdasarkan Nama Satuan Kerja</b></h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="get" action="{{route('jabatannamaCetak')}}" target="_blank">
+            <form method="get" action="{{route('satuannamaCetak')}}" target="_blank">
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
-                        <label for="nama">Pilih Nama Jabatan</label>
+                        <label for="nama">Pilih Nama Satuan Kerja</label>
                         <select name="nama" id="nama" class="form-control">
                             @foreach($data as $d)
                             <option value="{{$d->id}}">{{$d->nama}}</option>

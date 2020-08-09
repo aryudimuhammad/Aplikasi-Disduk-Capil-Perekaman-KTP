@@ -113,6 +113,15 @@ class CetakController extends Controller
         return $pdf->stream('laporan-unit-pdf');
     }
 
+    public function unitnama(Request $request)
+    {
+        $unit = Unit::where('id', $request->nama)->first();
+        $data = Pegawai::where('unit_id', $request->nama)->orderby('id', 'desc')->get();
+
+        $pdf = PDF::loadview('laporan/unitnama', compact('data', 'unit'));
+        return $pdf->stream('laporan-unit-pdf');
+    }
+
     public function satuan()
     {
         $data = Satuan::latest()->get();
@@ -121,11 +130,29 @@ class CetakController extends Controller
         return $pdf->stream('laporan-satuan-pdf');
     }
 
+    public function satuannama(Request $request)
+    {
+        $satuan = Satuan::where('id', $request->nama)->first();
+        $data = Pegawai::where('satuan_id', $request->nama)->orderby('id', 'desc')->get();
+
+        $pdf = PDF::loadview('laporan/satuannama', compact('data', 'satuan'));
+        return $pdf->stream('laporan-satuan-pdf');
+    }
+
     public function golongan()
     {
         $data = Golongan::latest()->get();
 
         $pdf = PDF::loadview('laporan/golongan', compact('data'));
+        return $pdf->stream('laporan-golongan-pdf');
+    }
+
+    public function golongannama(Request $request)
+    {
+        $golongan = Golongan::where('id', $request->nama)->first();
+        $data = Pegawai::where('golongan_id', $request->nama)->where('id', 'desc')->get();
+
+        $pdf = PDF::loadview('laporan/golongannama', compact('data', 'golongan'));
         return $pdf->stream('laporan-golongan-pdf');
     }
 

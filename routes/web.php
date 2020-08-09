@@ -102,8 +102,11 @@ Route::group(['middleware' => ['auth', 'Checkrole:1']], function () {
     Route::get('/cetak/perpanjangtgl/cuti', 'CetakController@perpanjangtgl')->name('perpanjangtglCetak');
     Route::get('/cetak/instansi', 'CetakController@instansi')->name('instansiCetak');
     Route::get('/cetak/unit', 'CetakController@unit')->name('unitCetak');
+    Route::get('/cetak/unitnama', 'CetakController@unitnama')->name('unitnamaCetak');
     Route::get('/cetak/satuan', 'CetakController@satuan')->name('satuanCetak');
+    Route::get('/cetak/satuannama', 'CetakController@satuannama')->name('satuannamaCetak');
     Route::get('/cetak/golongan', 'CetakController@golongan')->name('golonganCetak');
+    Route::get('/cetak/golongannama', 'CetakController@golongannama')->name('golongannamaCetak');
     Route::get('/cetak/jabatan', 'CetakController@jabatan')->name('jabatanCetak');
     Route::get('/cetak/jabatannama', 'CetakController@jabatannama')->name('jabatannamaCetak');
 });
