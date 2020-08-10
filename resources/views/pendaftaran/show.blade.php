@@ -27,7 +27,7 @@
                                         <td class="text-center">{{$d->nama}}</td>
                                         <td>{{$d->email}}</td>
                                         <td class="text-center">{{carbon\carbon::parse($d->created_at)->translatedformat('d F Y')}}</td>
-                                        <td class="text-center">@if($d->status_ktp == 1) Belum Selesai @else Sudah Selesai @endif</td>
+                                        <td class="text-center">@if($d->status_ktp == 1) Belum Diverifikasi @elseif($d->status_ktp == 2) Diverifikasi @elseif($d->status_ktp == 3) Tidak Diverifikasi @else Sudah Selesai @endif</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
