@@ -98,7 +98,7 @@
                     <th>No</th>
                     <th>NIP</th>
                     <th>Nama Pegawai</th>
-                    <th>Jenis Pensiun</th>
+                    <th>Status Pensiun</th>
                     <th>Status Berkas</th>
                     <th>Keterangan</th>
                     <th>Status</th>

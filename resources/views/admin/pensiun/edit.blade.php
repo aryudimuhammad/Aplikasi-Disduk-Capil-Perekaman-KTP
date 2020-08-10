@@ -26,7 +26,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="jenis_pensiun">Pilih Jenis Pensiun</label>
+                        <label for="jenis_pensiun">Pilih Status</label>
                         <select name="jenis_pensiun" id="jenis_pensiun" class="form-control">
                             <option value="1" @if (old('jenis_pensiun')==1 ){{'selected'}} @endif>Batas Usia Pensiun</option>
                             <option value="2" @if (old('jenis_pensiun')==2 ){{'selected'}} @endif>Atas Permintaan Sendiri</option>
@@ -37,7 +37,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="status_berkas">Pilih Status Berkas</label>
+                        <label for="status_berkas">Pilih Berkas</label>
                         <select name="status_berkas" id="status_berkas" class="form-control">
                             <option value="1" @if (old('status_berkas')==1 ){{'selected'}} @endif>Proses BKD</option>
                             <option value="2" @if (old('status_berkas')==2 ){{'selected'}} @endif>Proses BKD BTL</option>

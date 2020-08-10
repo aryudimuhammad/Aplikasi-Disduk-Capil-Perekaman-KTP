@@ -26,7 +26,7 @@
             border: 1px solid;
             padding-left: 5px;
             text-align: center;
-            font-size: 13px;
+            font-size: 10px;
         }
 
         .judul {
@@ -98,12 +98,17 @@
                     <th>No</th>
                     <th>NIP</th>
                     <th>Nama</th>
-                    <th>Instansi Kerja</th>
+                    <!-- <th>Instansi Kerja</th> -->
                     <th>Unit Kerja</th>
                     <th>Satuan Kerja</th>
                     <th>Golongan</th>
                     <th>Jabatan</th>
                     <th>Tanggal Masuk</th>
+                    <th>Agama</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Tempat Lahir</th>
+                    <th>Alamat</th>
                 </tr>
             </thead>
             <tbody>
@@ -112,12 +117,17 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$d->nip}}</td>
                     <td>{{$d->user->name}}</td>
-                    <td>{{$d->instansi->nama}}</td>
+                    <!-- <td>{{$d->instansi->nama}}</td> -->
                     <td>{{$d->unit->nama}}</td>
                     <td>{{$d->satuan->nama}}</td>
                     <td>{{$d->golongan->nama}}</td>
                     <td>{{$d->jabatan->nama}}</td>
                     <td>{{carbon\carbon::parse($d->tgl_masuk)->translatedformat('d F Y')}}</td>
+                    <td>@if($d->agama == 1) Islam @elseif($d->agama == 2) Kristen Protestan @elseif($d->agama == 3 ) Katolik @elseif($d->agama == 4) Hindu @elseif($d->agama == 5 ) Buddha @else Kong Hu Cu @endif</td>
+                    <td>@if($d->jk == 1) Laki-Laki @else Perempuan @endif</td>
+                    <td>{{carbon\carbon::parse($d->tgl_lahir)->translatedformat('d F Y')}}</td>
+                    <td>{{$d->tempat_lahir}}</td>
+                    <td>{{$d->alamat}}</td>
                 </tr>
                 @endforeach
             </tbody>

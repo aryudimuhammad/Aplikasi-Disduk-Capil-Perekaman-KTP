@@ -26,7 +26,7 @@
             border: 1px solid;
             padding-left: 5px;
             text-align: center;
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .judul {
@@ -97,13 +97,17 @@
                 <tr>
                     <th>No</th>
                     <th>Permohonan</th>
-                    <th>Foto KTP</th>
                     <th>Nama Lengkap</th>
-                    <th>Email</th>
+                    <!-- <th>Email</th> -->
                     <th>KK</th>
                     <th>NIK</th>
                     <th>Status</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Alamat</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Agama</th>
                     <th>Keterangan</th>
+                    <th>Foto</th>
                 </tr>
             </thead>
             <tbody>
@@ -111,13 +115,17 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>@if($d->permohonan == 1) Baru @elseif($d->permohonan == 2) Perpanjangan @elseif($d->permohonan == 3 ) Pergantian @else - @endif</td>
-                    <td class="text-center"><img src="foto/{{$d->foto}}" alt="foto" class="customer-img" style="border-radius: 10%;" width="130%;" height="150%;"></td>
                     <td>{{$d->nama}}</td>
-                    <td>{{$d->email}}</td>
+                    <!-- <td>{{$d->email}}</td> -->
                     <td>{{$d->kk}}</td>
                     <td>{{$d->nik}}</td>
                     <td>@if($d->status_ktp == 1) Belum Diverifikasi @elseif($d->status_ktp == 2) Diverifikasi @elseif($d->status_ktp == 3) Tidak Diverifikasi @else Selesai @endif </td>
+                    <td>@if($d->jk == 1) Laki-Laki @else Perempuan @endif</td>
+                    <td>{{$d->alamat}}</td>
+                    <td>{{carbon\carbon::parse($d->tgl_lahir)->translatedformat('d F Y')}}</td>
+                    <td>@if($d->agama == 1) Islam @elseif($d->agama == 2) Kristen Protestan @elseif($d->agama == 3 ) Katolik @elseif($d->agama == 4) Hindu @elseif($d->agama == 5 ) Buddha @else Kong Hu Cu @endif</td>
                     <td>@if($d->keterangan == null) - @else {{$d->keterangan}} @endif </td>
+                    <td class="text-center"><img src="foto/{{$d->foto}}" alt="foto" class="customer-img" style="border-radius: 10%;" width="130%;" height="150%;"></td>
                 </tr>
                 @endforeach
             </tbody>
