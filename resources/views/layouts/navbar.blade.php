@@ -25,7 +25,8 @@
                                     <i class="zmdi zmdi-account-box fa-2x mr-3 text-danger"></i>
                                     <div class="media-body">
                                         <h6 class="mt-0 msg-title"> <a href="{{route('ktpIndex')}}">Pendaftaran KTP</a> </h6>
-                                        @if(totalperpanjangnotif() > 0) <p class="msg-danger">{{totalktpnotif()}} Data Perlu Dikonfirmasi</p>
+                                        @if(totalktpnotif() > 0)
+                                        <p class="msg-danger">{{totalktpnotif()}} Data Perlu Dikonfirmasi</p>
                                         @else
                                         <p class="msg-danger">Tidak Ada Data yang Perlu Dikonfirmasi</p>
                                         @endif
@@ -51,7 +52,7 @@
                                     <i class="zmdi zmdi-calendar-close fa-2x mr-3 text-danger"></i>
                                     <div class="media-body">
                                         <h6 class="mt-0 msg-title"> <a href="{{route('pensiunIndex')}}">Pengusulan Pensiun</a> </h6>
-                                        @if(totalperpanjangnotif() > 0) <p class="msg-danger">{{totalpensiunnotif()}} Data Perlu Dikonfirmasi</p>
+                                        @if(totalpensiunnotif() > 0) <p class="msg-danger">{{totalpensiunnotif()}} Data Perlu Dikonfirmasi</p>
                                         @else
                                         <p class="msg-danger">Tidak Ada Data yang Perlu Dikonfirmasi</p>
                                         @endif
@@ -77,7 +78,7 @@
                                     <i class="zmdi zmdi-calendar-note fa-2x mr-3 text-danger"></i>
                                     <div class="media-body">
                                         <h6 class="mt-0 msg-title"><a href="{{route('cutiIndex')}}">Pengusulan Cuti</a></h6>
-                                        @if(totalperpanjangnotif() > 0) <p class="msg-danger">{{totalcutinotif()}} Data Perlu Dikonfirmasi</p>
+                                        @if(totalcutinotif() > 0) <p class="msg-danger">{{totalcutinotif()}} Data Perlu Dikonfirmasi</p>
                                         @else
                                         <p class="msg-danger">Tidak Ada Data yang Perlu Dikonfirmasi</p>
                                         @endif

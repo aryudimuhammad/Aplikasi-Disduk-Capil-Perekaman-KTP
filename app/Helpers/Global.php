@@ -23,7 +23,7 @@ function totalktp()
 
 function totalktpnotif()
 {
-    return Ktp::where('status', 1)->count();
+    return Ktp::where('status_ktp', 1)->count();
 }
 
 function totalpensiun()
