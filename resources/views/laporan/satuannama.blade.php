@@ -128,9 +128,9 @@
             <h5>Kepala Dinas</h5>
             <br>
             <br>
-            <h5 style="text-decoration:underline; margin-bottom:0px;">Maulana Irfan, S.Kom</h5>
+            <h5 style="text-decoration:underline; margin-bottom:0px;">Irsan Sayuti, S.Sos, M.Si</h5>
             <!-- <h5>Penanggung jawab</h5> -->
-            <h5>NIK. 201101 19920709 7</h5>
+            <h5>NIP. 19720305 199811 1 001 7</h5>
         </div>
     </div>
 </body>
