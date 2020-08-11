@@ -150,7 +150,7 @@ class CetakController extends Controller
     public function golongannama(Request $request)
     {
         $golongan = Golongan::where('id', $request->nama)->first();
-        $data = Pegawai::where('golongan_id', $request->nama)->where('id', 'desc')->get();
+        $data = Pegawai::where('golongan_id', $golongan->id)->orderby('id', 'desc')->get();
 
         $pdf = PDF::loadview('laporan/golongannama', compact('data', 'golongan'));
         return $pdf->stream('laporan-golongan-pdf');
