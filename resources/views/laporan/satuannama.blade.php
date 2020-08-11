@@ -102,6 +102,11 @@
                     <th>Golongan</th>
                     <th>Jabatan</th>
                     <th>Tanggal Masuk</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Agama</th>
+                    <th>Alamat</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Tempat Lahir</th>
                 </tr>
             </thead>
             <tbody>
@@ -114,6 +119,11 @@
                     <td>{{$d->golongan->nama}}</td>
                     <td>{{$d->jabatan->nama}}</td>
                     <td>{{carbon\carbon::parse($d->tgl_masuk)->translatedformat('d F Y')}}</td>
+                    <td>@if($d->jk == 1) Laki-Laki @else Perempuan @endif</td>
+                    <td>@if($d->agama == 1) Islam @elseif($d->agama == 2) Kristen Protestan @elseif($d->agama == 3 ) Katolik @elseif($d->agama == 4) Hindu @elseif($d->agama == 5 ) Buddha @else Kong Hu Cu @endif</td>
+                    <td>{{$d->alamat}}</td>
+                    <td>{{carbon\carbon::parse($d->tgl_lahir)->translatedformat('d F Y')}}</td>
+                    <td>{{$d->tempat_lahir}}</td>
                 </tr>
                 @endforeach
             </tbody>

@@ -113,7 +113,7 @@
                     <td>{{$d->pegawai->user->name}}</td>
                     <td>@if($d->jenis_cuti == 3 ) Cuti Sakit @elseif($d->jenis_cuti == 4 ) Cuti Bersalin @else - @endif</td>
                     <td>{{carbon\carbon::parse($d->mulai_cuti)->translatedformat('d F Y')}} s/d {{carbon\carbon::parse($d->akhir_cuti)->translatedformat('d F Y')}}</td>
-                    <td>{{$d->keterangan}}</td>
+                    <td>@if($d->keterangan == null) - @else {{$d->keterangan}} @endif</td>
                     <td>@if($d->status == 1) Belum Diverifikasi @elseif($d->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                     <td>@if($d->perpanjang->status == 1) Belum Diverifikasi @elseif($d->perpanjang->status == 2 ) Terverifikasi @else Tidak Diverifikasi @endif </td>
                 </tr>
