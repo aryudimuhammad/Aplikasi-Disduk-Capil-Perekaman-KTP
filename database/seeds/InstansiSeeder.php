@@ -15,8 +15,8 @@ class InstansiSeeder extends Seeder
     {
         Instansi::insert([
             'uuid' => Str::random(36),
-            'kode' => 'G001',
-            'nama' => 'Instansi',
+            'kode' => '001',
+            'nama' => 'DINAS PENCATATAN SIPIL DAN KELUARGA BERENCANA',
         ]);
     }
 }

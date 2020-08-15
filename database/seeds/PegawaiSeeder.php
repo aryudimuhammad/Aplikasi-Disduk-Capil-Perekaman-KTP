@@ -22,10 +22,10 @@ class PegawaiSeeder extends Seeder
                 'nip' => $faker->ean13,
                 'user_id' => $i,
                 'instansi_id' => '1',
-                'unit_id' => '1',
-                'satuan_id' => '1',
-                'golongan_id' => '1',
-                'jabatan_id' => '1',
+                'unit_id' => $faker->numberBetween(1, 5),
+                'satuan_id' => $faker->numberBetween(1, 3),
+                'golongan_id' => $faker->numberBetween(1, 7),
+                'jabatan_id' => $faker->numberBetween(2, 10),
                 'tgl_masuk' => $faker->date,
                 'tempat_lahir' => $faker->city,
                 'tgl_lahir' => $faker->date,
@@ -40,16 +40,16 @@ class PegawaiSeeder extends Seeder
             ]);
         }
 
-        for ($i = 5; $i <= 11; $i++) {
+        for ($i = 5; $i <= 8; $i++) {
             Pegawai::insert([
                 'uuid' => Str::random(36),
                 'nip' => $faker->ean13,
                 'user_id' => $i,
                 'instansi_id' => '1',
-                'unit_id' => '1',
-                'satuan_id' => '1',
-                'golongan_id' => '1',
-                'jabatan_id' => '1',
+                'unit_id' => $faker->numberBetween(1, 5),
+                'satuan_id' => $faker->numberBetween(1, 3),
+                'golongan_id' => $faker->numberBetween(1, 7),
+                'jabatan_id' => $faker->numberBetween(2, 10),
                 'tgl_masuk' => $faker->date,
                 'tempat_lahir' => $faker->city,
                 'tgl_lahir' => $faker->date,

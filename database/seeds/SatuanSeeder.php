@@ -15,8 +15,18 @@ class SatuanSeeder extends Seeder
     {
         Satuan::insert([
             'uuid' => Str::random(36),
-            'kode' => 'G001',
-            'nama' => 'Satuan Kerja',
+            'kode' => '001',
+            'nama' => 'APARATUR PENCATATAN SIPIL',
+        ]);
+        Satuan::insert([
+            'uuid' => Str::random(36),
+            'kode' => '002',
+            'nama' => 'ADMINISTRASI KEPENDUDUKAN',
+        ]);
+        Satuan::insert([
+            'uuid' => Str::random(36),
+            'kode' => '003',
+            'nama' => 'PENCATATAN SIPIL',
         ]);
     }
 }
