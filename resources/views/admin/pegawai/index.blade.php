@@ -36,7 +36,7 @@
                                         <th>No</th>
                                         <th>NIP</th>
                                         <th>Nama</th>
-                                        <th>Instansi Kerja</th>
+                                        <!-- <th>Instansi Kerja</th> -->
                                         <th>Unit Kerja</th>
                                         <th>Satuan Kerja</th>
                                         <th>Golongan</th>
@@ -51,7 +51,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$d->nip}}</td>
                                         <td>{{$d->user->name}}</td>
-                                        <td>{{$d->instansi->nama}}</td>
+                                        <!-- <td>{{$d->instansi->nama}}</td> -->
                                         <td>{{$d->unit->nama}}</td>
                                         <td>{{$d->satuan->nama}}</td>
                                         <td>{{$d->golongan->nama}}</td>
