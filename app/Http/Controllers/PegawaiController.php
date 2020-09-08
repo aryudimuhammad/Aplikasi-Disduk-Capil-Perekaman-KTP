@@ -31,9 +31,10 @@ class PegawaiController extends Controller
     {
         $messages = [
             'required' => ':attribute harus diisi.',
+            'unique' => 'Nip Sudah Terdaftar.',
         ];
         $validator = Validator::make($request->all(), [
-            'nip' => 'required',
+            'nip' => 'required|unique:pegawais',
             'nama' => 'required',
             'instansi' => 'required',
             'unit' => 'required',
