@@ -94,7 +94,7 @@
         <br>
         <small>Tanggal Dibuat : {{$date}}</small>
         <p>Yang bertanda tangan dibawah ini Kepala Dinas Dinas Kependudukan dan Pencatatan Sipil Provinsi Kalimantan Selatan menerangkan bahwa.</p>
-        <table>
+        <table style="padding-bottom: 3px;">
             <tr>
                 <td class="text-left" style="padding-left: 60px; width:120px;">Nama</td>
                 <td style="width:10px;">:</td>
@@ -157,13 +157,11 @@
         <br>
         <br>
         <div class="ttd">
-            <h5>
-                Banjarbaru,
-            </h5>
-            <h5>Kepala Dinas</h5>
-            <br>
-            <br>
-            <h5 style="text-decoration:underline; margin-bottom:0px;">Irsan Sayuti, S.Sos, M.Si</h5>
+            <h5>Banjarbaru,</h5>
+            <h5 style="margin-top: -3px;">Kepala Dinas</h5>
+            <!-- <img class="sizeimg" src="images/logo.gif"> -->
+            <img src="images/qr-code.png" style="padding-top:10px; width: 100px; heigth:100px;" alt="">
+            <h5 style="text-decoration:underline; margin-bottom:0px; margin-top: -5px;">Irsan Sayuti, S.Sos, M.Si</h5>
             <!-- <h5>Penanggung jawab</h5> -->
             <h5>NIP. 19720305 199811 1 001 7</h5>
         </div>
