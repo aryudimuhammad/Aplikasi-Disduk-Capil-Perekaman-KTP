@@ -18,8 +18,14 @@
                             <option value="1">Pilih Status</option>
                             <option value="2">Verifikasi</option>
                             <option value="3">Tidak Diverifikasi</option>
-                            <option value="4">Selesai Dibuat</option>
+                            <option value="4">Bisa Diambil</option>
+                            <option value="5">Sudah Diambil</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nomor">Nomor</label>
+                        <input placeholder="Masukkan Keterangan Jika Terjadi Kesalahan Data." class="form-control" id="nomor" name="nomor" value="{{old('nomor')}}">
+                        <p>Note : Masukkan Nomor Jika Memverifikasi KTP Permohonan Baru.</p>
                     </div>
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>

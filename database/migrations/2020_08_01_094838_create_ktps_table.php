@@ -29,12 +29,13 @@ class CreateKtpsTable extends Migration
             $table->integer('rt');
             $table->integer('rw');
             $table->string('kewarganegaraan');
-            $table->enum('goldar', ['1', '2', '3', '4']);
+            $table->enum('goldar', ['1', '2', '3', '4', '5']);
             $table->string('pekerjaan');
             $table->string('foto');
             $table->string('email');
             $table->enum('status_ktp', ['1', '2', '3', '4'])->default('1');
             $table->text('keterangan')->nullable();
+            $table->string('nomor')->nullable();
             $table->timestamps();
         });
     }

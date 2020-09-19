@@ -41,6 +41,15 @@ class CetakController extends Controller
         return $pdf->stream('laporan-ktp-pdf');
     }
 
+    public function ktpsementara($id)
+    {
+        $data = Ktp::find($id);
+        $date = Carbon::parse($data->updated_at)->translatedFormat('d F Y');
+
+        $pdf = PDF::loadview('laporan/ktpsementara', compact('data', 'date'));
+        return $pdf->stream('laporan-ktp-pdf');
+    }
+
     public function ktptgl(Request $request)
     {
         $data = Ktp::whereBetween('created_at', [$request->start, $request->end])->get();

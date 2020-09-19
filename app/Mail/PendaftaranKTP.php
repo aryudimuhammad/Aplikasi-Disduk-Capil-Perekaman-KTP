@@ -29,6 +29,7 @@ class PendaftaranKTP extends Mailable
     public function build()
     {
         return $this->markdown('Mails.Pendaftaranktp')->with([
+            'id' => $this->ktp->id,
             'nama' => $this->ktp->nama,
             'permohonan' => $this->ktp->permohonan,
             'status' => $this->ktp->status_ktp,

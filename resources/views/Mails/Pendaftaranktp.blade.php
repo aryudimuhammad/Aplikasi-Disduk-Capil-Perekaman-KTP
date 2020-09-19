@@ -1,6 +1,10 @@
 @component('mail::message')
 Hai {{$nama}},
 
+@if($permohonan == 1 && $status == 2)
+<a href="{{route('ktpsementaraCetak',['id' => $id])}}" target="_blank" class="dropdown-item">Cetak KTP Sementara</a>
+@endif
+
 @if($status == 1 )
 Pendaftaran KTP dengan Status Permohonan @if($permohonan == 1) Pembuatan KTP Baru @elseif($permohonan == 2 ) Perpanjang KTP @else Pergantian KTP @endif sudah terkirim, Silahkan tunggu Konfirmasi dari Admin Disdukcapil. <br>
 @elseif($status == 2)

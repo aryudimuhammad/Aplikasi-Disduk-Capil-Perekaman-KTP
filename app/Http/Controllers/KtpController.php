@@ -140,13 +140,35 @@ class KtpController extends Controller
 
     public function status(Request $request)
     {
-        $data = Ktp::where('uuid', $request->id)->first();
-        $data->status_ktp = $request->status;
-        $data->keterangan = $request->keterangan;
-        $data->update();
-        Mail::to($data->email)->send(new PendaftaranKTP($data));
 
-        return back()->with('success', 'Terkirim, Status Berhasil Diubah.');
+        $data = Ktp::where('uuid', $request->id)->first();
+
+        if ($data->permohonan == 1 && $request->status == 2) {
+
+            if (!$request->nomor) {
+                return back()->with('warning', 'Nomor Harus Diisi.');
+            }
+
+            $data->status_ktp = $request->status;
+            $data->nomor = $request->nomor;
+            $data->update();
+            Mail::to($data->email)->send(new PendaftaranKTP($data));
+
+            return back()->with('success', 'Terkirim, Status Berhasil Diubah');
+        } elseif ($request->status == 5) {
+            $data->status_ktp = $request->status;
+            $data->keterangan = $request->keterangan;
+            $data->update();
+
+            return back()->with('success', 'Status KTP Berhasil Diubah.');
+        } else {
+            $data->status_ktp = $request->status;
+            $data->keterangan = $request->keterangan;
+            $data->update();
+            Mail::to($data->email)->send(new PendaftaranKTP($data));
+
+            return back()->with('success', 'Terkirim, Status Berhasil Diubah.');
+        }
     }
 
     public function delete($id)
