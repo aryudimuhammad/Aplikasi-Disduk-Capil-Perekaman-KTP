@@ -11,6 +11,28 @@
                     </div>
                     <div class="card-body">
                         @if(auth()->user()->role == 1)
+
+                        <div class="card-header border-0">
+                            <h3 class="card-title">Data Statistik Tahun {{Carbon\Carbon::now()->format('Y')}} {{totaljanuaribaru()}}</h3>
+                            <a>
+                                <font color='007bff'><i class="fa fa-square"></i></font> Permohonan Baru
+                            </a>
+                            <br>
+                            <a>
+                                <font color='000080'><i class="fa fa-square"></i></font> Perpanjang KTP
+                            </a>
+                            <br>
+                            <a>
+                                <font color='00BFFF'><i class="fa fa-square"></i></font> Pergantian KTP
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="position-relative mb-4">
+                                <canvas id="sales-chart" height="315" style="display: block; width: 487px; height: 315px;" width="487" class="chartjs-render-monitor"></canvas>
+                            </div>
+                        </div>
+
+
                         <div class="row mt-3">
 
                             <div class="col-12 col-lg-6 col-xl-3">
@@ -153,7 +175,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-lg-12 col-xl-12" style="margin-top: 50px; margin-bottom:100px;">
+                            <div class="col-12 col-lg-12 col-xl-12" style="margin-top: 150px; margin-bottom:100px;">
                                 <img src="{{url('images/logo.gif')}}" style="margin: auto; display:block;" alt="logo">
                             </div>
 
@@ -174,9 +196,81 @@
 @endsection
 @section('script')
 <!-- Chart js -->
-<script src="assets/plugins/Chart.js/Chart.min.js"></script>
+<script src="{{url('template/assets/plugins/Chart.js/Chart.min.js')}}"></script>
 <!--Peity Chart -->
-<script src="assets/plugins/peity/jquery.peity.min.js"></script>
+<script src="{{url('template/assets/plugins/peity/jquery.peity.min.js')}}"></script>
 <!-- Index2 js -->
-<script src="assets/js/dashboard-service-support.js"></script>
+<script src="{{url('template/assets/js/dashboard-service-support.js')}}"></script>
+
+<!-- jQuery -->
+<script src="{{url('template/plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap -->
+<script src="{{url('template/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- AdminLTE -->
+<script src="{{url('template/dist/js/adminlte.js')}}"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="{{url('template/plugins/chart.js/Chart.min.js')}}"></script>
+<script src="{{url('template/dist/js/demo.js')}}"></script>
+
+<script>
+    $(function() {
+        'use strict'
+
+        var ticksStyle = {
+            fontColor: '#495057',
+            fontStyle: 'bold'
+        }
+
+        var mode = 'index'
+        var intersect = true
+
+        var $salesChart = $('#sales-chart')
+        var salesChart = new Chart($salesChart, {
+            type: 'bar',
+            data: {
+                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                datasets: [{
+                        backgroundColor: '#007bff',
+                        borderColor: '#007bff',
+                        data: [<?php  ?>]
+                    },
+                    {
+                        backgroundColor: '#000080',
+                        borderColor: '#000080',
+                        data: [<?php totaljanuariperpanjang() ?>, 1700, 2700, 2000, 1800, 1500, 2000, 2700, 2700, 2700, 2700, 2700]
+                    },
+                    {
+                        backgroundColor: '#00BFFF',
+                        borderColor: '#00BFFF',
+                        data: [<?php totaljanuaripergantian() ?>, 1700, 2700, 2000, 1800, 1500, 2000, 2700, 2700, 2700, 2700, 2700]
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                hover: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: ticksStyle
+                    }]
+                }
+            }
+        })
+    })
+</script>
 @endsection
