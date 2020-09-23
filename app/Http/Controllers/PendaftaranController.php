@@ -41,6 +41,7 @@ class PendaftaranController extends Controller
         ], $messages);
 
         if ($validator->fails()) {
+
             return back()->with('warning', $validator->errors()->all()[0])->withInput();
         }
 

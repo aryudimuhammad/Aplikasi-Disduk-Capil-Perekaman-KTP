@@ -16,7 +16,7 @@ class KtpSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 25; $i++) {
 
             Ktp::insert([
                 'uuid' => Str::random(36),
@@ -37,11 +37,12 @@ class KtpSeeder extends Seeder
                 'pekerjaan' => 'Swasta',
                 'foto' => 'default.png',
                 'email' => $faker->email,
+                'created_at' => $faker->dateTimeBetween('now'),
             ]);
         }
 
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 25; $i++) {
 
             Ktp::insert([
                 'uuid' => Str::random(36),
@@ -62,6 +63,7 @@ class KtpSeeder extends Seeder
                 'pekerjaan' => 'Swasta',
                 'foto' => 'default.png',
                 'email' => $faker->email,
+                'created_at' => $faker->dateTimeBetween('now'),
             ]);
         }
     }

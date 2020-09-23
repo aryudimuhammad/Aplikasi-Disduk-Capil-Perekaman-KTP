@@ -62,25 +62,29 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="nama">Nama Lengkap</label>
-                                <input type="text" class="form-control form-control-user" id="nama" name="nama" placeholder="Masukkan Nama Lengkap" value="{{old('nama')}}">
+                                <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" placeholder=" Masukkan Nama Lengkap" value="{{old('nama')}}">
+                                @error('nama')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="kk">No. KK</label>
-                                <input type="number" class="form-control form-control-user" id="kk" name="kk" value="{{old('kk')}}" placeholder="Masukkan Nomor Kartu Keluarga" maxlength="16">
+                                <input type="number" class="form-control @error('kk') is-invalid @enderror" id="kk" name="kk" value="{{old('kk')}}" placeholder="Masukkan Nomor Kartu Keluarga" maxlength="16">
+                                @error('kk')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="nik">NIK</label>
-                                <input type="number" class="form-control form-control-user" id="nik" name="nik" value="{{old('nik')}}" placeholder="Masukkan Nomor NIK" maxlength="16">
+                                <input type="number" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" value="{{old('nik')}}" placeholder="Masukkan Nomor NIK" maxlength="16">
+                                @error('nik')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="email">Email</label>
-                                <input type="email" placeholder="Masukkan Email" class="form-control form-control-user" value="{{old('email')}}" id="email" name="email">
+                                <input type="email" placeholder="Masukkan Email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" id="email" name="email">
+                                @error('email')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="jk">Jenis Kelamin</label>
@@ -94,11 +98,13 @@
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="tempat_lahir">Tempat Lahir</label>
-                                <input type="text" value="{{old('tempat_lahir')}}" class="form-control form-control-user" id="tempat_lahir" name="tempat_lahir" placeholder="Kota Tempat Lahir">
+                                <input type="text" value="{{old('tempat_lahir')}}" class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir" name="tempat_lahir" placeholder="Kota Tempat Lahir">
+                                @error('tempat_lahir')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="tgl_lahir">Tgl Lahir</label>
-                                <input type="date" value="{{old('tgl_lahir')}}" class="form-control form-control-user" id="tgl_lahir" name="tgl_lahir">
+                                <input type="date" value="{{old('tgl_lahir')}}" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir">
+                                @error('tgl_lahir')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                         </div>
 
@@ -126,15 +132,18 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="alamat">Alamat</label>
-                                <textarea name="alamat" class="form-control" placeholder="Alamat Rumah">{{old('alamat')}}</textarea>
+                                <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder=" Alamat Rumah">{{old('alamat')}}</textarea>
+                                @error('alamat')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                             <div class="col-sm-3">
                                 <label for="rt">RT</label>
-                                <input type="number" value="{{old('rt')}}" class="form-control form-control-user" id="rt" name="rt" placeholder="RT">
+                                <input type="number" value="{{old('rt')}}" class="form-control @error('rt') is-invalid @enderror" id="rt" name="rt" placeholder="RT">
+                                @error('rt')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                             <div class="col-sm-3">
                                 <label for="rw">RW</label>
-                                <input type="number" value="{{old('rw')}}" class="form-control form-control-user" id="rw" name="rw" placeholder="RW">
+                                <input type="number" value="{{old('rw')}}" class="form-control @error('rw') is-invalid @enderror" id="rw" name="rw" placeholder="RW">
+                                @error('rw')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                         </div>
                     </div>
@@ -142,11 +151,13 @@
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="pekerjaan">Pekerjaan</label>
-                                <input type="text" class="form-control form-control-user" value="{{old('pekerjaan')}}" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan">
+                                <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" value="{{old('pekerjaan')}}" id="pekerjaan" name="pekerjaan" placeholder="Pekerjaan">
+                                @error('pekerjaan')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="kewarganegaraan">Kewarganegaraan</label>
-                                <input type="text" class="form-control form-control-user" value="{{old('kewarganegaraan')}}" id="kewarganegaraan" name="kewarganegaraan" placeholder="WNI">
+                                <input type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror" value="{{old('kewarganegaraan')}}" id="kewarganegaraan" name="kewarganegaraan" placeholder="WNI">
+                                @error('kewarganegaraan')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                         </div>
 
@@ -162,11 +173,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="foto">Foto</label>
-                                <input type="file" name="foto" id="foto" class="form-control" value="{{old('foto')}}" onchange="document.getElementById('foto').value = this.value;" aria-describedby="foto" value="{{old('foto')}}">
+                                <input type="file" name="foto" id="foto" class="form-control @error('foto') is-invalid @enderror" value="{{old('foto')}}" onchange="document.getElementById('foto').value = this.value;" aria-describedby="foto" value="{{old('foto')}}">
+                                @error('foto')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
-                            <!-- <div class="col-sm-3" style="margin-top: 35px;">
-                                Belum ada Foto ? <button class="btn btn-info btn-sm">Klik disini</button>
-                            </div> -->
                         </div>
                     </div>
                     <div class="col-md-2 float-right">

@@ -260,7 +260,8 @@
                         },
                         ticks: $.extend({
                             beginAtZero: true,
-                            suggestedMax: '{{$jumlah}}'
+                            // suggestedMax: '{{$jumlah}}'
+                            suggestedMax: 10
                         }, ticksStyle)
                     }],
                     xAxes: [{

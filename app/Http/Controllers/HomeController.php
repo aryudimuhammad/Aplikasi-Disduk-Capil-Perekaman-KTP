@@ -48,7 +48,7 @@ class HomeController extends Controller
     public function dashboard()
     {
         $now = Carbon::now()->format('Y');
-        $jumlah = Ktp::whereYear('created_at', $now)->count();
+        $jumlah = Ktp::whereYear('created_at', $now)->count('permohonan');
 
         $januari1 = Ktp::where('permohonan', 1)->whereMonth('created_at', '01')->whereYear('created_at', $now)->count();
         $januari2 = Ktp::where('permohonan', 2)->whereMonth('created_at', '01')->whereYear('created_at', $now)->count();
