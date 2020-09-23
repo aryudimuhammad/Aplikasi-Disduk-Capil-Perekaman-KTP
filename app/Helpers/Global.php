@@ -12,26 +12,26 @@ use App\Satuan;
 use App\Unit;
 use Carbon\Carbon;
 
-function totaljanuaribaru()
-{
-    $from = Carbon::parse('2020-01-01');
-    $to = date('2020-01-31');
-    return Ktp::where('permohonan', 1)->whereBetween('created_at', [$from, $to])->count();
-}
+// function totaljanuaribaru()
+// {
+//     $from = Carbon::parse('2020-01-01');
+//     $to = date('2020-01-31');
+//     return Ktp::where('permohonan', 1)->whereBetween('created_at', [$from, $to])->count();
+// }
 
-function totaljanuariperpanjang()
-{
-    $from = date('{{carbon\carbon::now()->format("Y")}}-01-01');
-    $to = date('{{carbon\carbon::now()->format("Y")}}-01-31');
-    return Ktp::where('permohonan', 2)->whereBetween('created_at', [$from, $to])->count();
-}
+// function totaljanuariperpanjang()
+// {
+//     $from = date('{{carbon\carbon::now()->format("Y")}}-01-01');
+//     $to = date('{{carbon\carbon::now()->format("Y")}}-01-31');
+//     return Ktp::where('permohonan', 2)->whereBetween('created_at', [$from, $to])->count();
+// }
 
-function totaljanuaripergantian()
-{
-    $from = date('{{carbon\carbon::now()->format("Y")}}-01-01');
-    $to = date('{{carbon\carbon::now()->format("Y")}}-01-31');
-    return Ktp::where('permohonan', 3)->whereBetween('created_at', [$from, $to])->count();
-}
+// function totaljanuaripergantian()
+// {
+//     $from = date('{{carbon\carbon::now()->format("Y")}}-01-01');
+//     $to = date('{{carbon\carbon::now()->format("Y")}}-01-31');
+//     return Ktp::where('permohonan', 3)->whereBetween('created_at', [$from, $to])->count();
+// }
 
 function totalpegawai()
 {

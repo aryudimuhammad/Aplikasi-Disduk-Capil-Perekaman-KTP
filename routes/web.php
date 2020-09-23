@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth', 'Checkrole:1,2']], function () {
     Route::delete('/admin/perpanjang/masa/cuti/{id}/{uuid}', 'PerpanjangController@delete')->name('perpanjangDelete');
 
     //Dashboard dan Profile
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@dashboard')->name('home');
     Route::get('/profile', 'HomeController@profile')->name('profileIndex');
     Route::post('/profile', 'HomeController@update')->name('profileUpdate');
 });

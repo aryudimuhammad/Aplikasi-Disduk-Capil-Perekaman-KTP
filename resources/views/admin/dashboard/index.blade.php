@@ -11,28 +11,14 @@
                     </div>
                     <div class="card-body">
                         @if(auth()->user()->role == 1)
-
-                        <div class="card-header border-0">
-                            <h3 class="card-title">Data Statistik Tahun {{Carbon\Carbon::now()->format('Y')}} {{totaljanuaribaru()}}</h3>
-                            <a>
-                                <font color='007bff'><i class="fa fa-square"></i></font> Permohonan Baru
-                            </a>
-                            <br>
-                            <a>
-                                <font color='000080'><i class="fa fa-square"></i></font> Perpanjang KTP
-                            </a>
-                            <br>
-                            <a>
-                                <font color='00BFFF'><i class="fa fa-square"></i></font> Pergantian KTP
-                            </a>
+                        <div class="card-header border-0" style="margin-bottom: -23px;">
+                            <h3 class="card-title">Data Statistik Tahun {{Carbon\Carbon::now()->format('Y')}}</h3>
                         </div>
                         <div class="card-body">
                             <div class="position-relative mb-4">
-                                <canvas id="sales-chart" height="315" style="display: block; width: 487px; height: 315px;" width="487" class="chartjs-render-monitor"></canvas>
+                                <canvas id="sales-chart" height="300" style="display: block; width: 487px; height: 300px;" width="487" class="chartjs-render-monitor"></canvas>
                             </div>
                         </div>
-
-
                         <div class="row mt-3">
 
                             <div class="col-12 col-lg-6 col-xl-3">
@@ -231,19 +217,22 @@
             data: {
                 labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
                 datasets: [{
+                        label: "Permohonan Baru",
                         backgroundColor: '#007bff',
                         borderColor: '#007bff',
-                        data: [<?php  ?>]
+                        data: ['{{$januari1}}', '{{$februari1}}', '{{$maret1}}', '{{$april1}}', '{{$mei1}}', '{{$juni1}}', '{{$juli1}}', '{{$agustus1}}', '{{$september1}}', '{{$oktober1}}', '{{$november1}}', '{{$desember1}}']
                     },
                     {
+                        label: "Perpanjang KTP",
                         backgroundColor: '#000080',
                         borderColor: '#000080',
-                        data: [<?php totaljanuariperpanjang() ?>, 1700, 2700, 2000, 1800, 1500, 2000, 2700, 2700, 2700, 2700, 2700]
+                        data: ['{{$januari2}}', '{{$februari2}}', '{{$maret2}}', '{{$april2}}', '{{$mei2}}', '{{$juni2}}', '{{$juli2}}', '{{$agustus2}}', '{{$september2}}', '{{$oktober2}}', '{{$november2}}', '{{$desember2}}']
                     },
                     {
+                        label: "Pergantian KTP",
                         backgroundColor: '#00BFFF',
                         borderColor: '#00BFFF',
-                        data: [<?php totaljanuaripergantian() ?>, 1700, 2700, 2000, 1800, 1500, 2000, 2700, 2700, 2700, 2700, 2700]
+                        data: ['{{$januari3}}', '{{$februari3}}', '{{$maret3}}', '{{$april3}}', '{{$mei3}}', '{{$juni3}}', '{{$juli3}}', '{{$agustus3}}', '{{$september3}}', '{{$oktober3}}', '{{$november3}}', '{{$desember3}}']
                     }
                 ]
             },
@@ -258,13 +247,26 @@
                     intersect: intersect
                 },
                 legend: {
-                    display: false
+                    display: true
                 },
                 scales: {
+                    yAxes: [{
+                        // display: false,
+                        gridLines: {
+                            display: true,
+                            lineWidth: '4px',
+                            color: 'rgba(0, 0, 0, .2)',
+                            zeroLineColor: 'transparent'
+                        },
+                        ticks: $.extend({
+                            beginAtZero: true,
+                            suggestedMax: '{{$jumlah}}'
+                        }, ticksStyle)
+                    }],
                     xAxes: [{
                         display: true,
                         gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: ticksStyle
                     }]
